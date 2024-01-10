@@ -1,0 +1,1252 @@
+Overview of python part 1
+X = 10 no required to define type (Dynamically Typed Programming Language)
+
+x = 10 ---> int integers
+x = 10.5 ---> float 
+x = ‘durga’ ---> str
+x = True or False ---> bool
+x = 10+20j ---> complex
+
+in python primitive types are not available all are object type
+
+immutable – once an object is created  we are not allowed to specify the size not allowed to change the content , if we are trying to change the content then new object will be created and the existing one we are not allowed to change the content
+-----------------------
+collection types: to convert a collection of objects into a single entity
+-----------------------
+list
+l = [10, 20, 30]
+
+duplicates are allowed 
+insertion order preserved
+mutalble
+------------------------
+
+tuple 
+t = (10, 20, 30)
+duplicates are allowed
+insertion order preserved
+immutable , once we create tuple the contents are not changeable
+--------------------------------------
+set
+s = {10, 20, 30}
+
+duplicates are not allowed
+order is not preserved
+mutable
+---------------------
+dictionary
+d = {101:’durga’, 102:’ravi’}
+----------------------
+string: ‘durga’
+supports positive index and negative index
+
+slice operator:
+------------------
+s= ‘abcdefghijkl’
+s[begin:end:step]
+s[2:7]
+incriment by one
+s[2:7:2]
+range(10) ==> 0 to 9
+range(10, 20) ==> 10 to 19
+range(0, 101, 5) ==> 0 to 100 increment +5
+--------------------------------
+
++,-,*,/,%
+//
+**
+-----------------
+
+logical operator
+
+and              ,              or 
+
+==               and          is
+
+==    ,   operator always meant for content comparison
+is           ,      operator reference comparison
+
+in                    ,           not in              (membership operator)
+if x in list:
+	print(x)
+
+input() ===> input return type is always str
+eval()
+----------------------
+
+sep
+end
+print(10,20,30,40,50 sep=’-’) ===> 10-20-30
+
+print(10, end=’’)
+
+print(10,20,30,sep=’:’,end=’ ‘)
+print(‘A’,’B’,’C’, sep=’:’)
+
+--------------------------------
+.format method
+
+name = ‘durga’
+marks = 100
+salary = 10000
+print(‘Name:{},Marks:{},Salary:{}’.format(name,marks,salary))
+------------
+
+if 
+else
+if elif else
+while 
+for
+break
+continue
+pass
+
+break
+-----------------
+l = [0,  5, 10, 15, 20, 25, 30]
+for x in l:
+	if x%2==0:
+		break 0 % 2 = 0 so we’ll break out of the loop then there will be no output
+		continue
+	print(x)
+
+
+-----------------------------------------
+
+del x            |           x = None if you feel object x no longer required (good programming practice)
+
+-----------------------------------------
+list method
+
+l = []
+l.append(x)
+l.remove(x)
+
+----------------------------
+
+list comprehension:
+l = [ x for x in range(1, 11) if x%2==0]
+     [ expression for item in sequence if condition ]
+print(l)
+
+for empty set
+s = {} ----> not set but dict 
+
+for empty set use set method
+s = set()
+s.add(10)
+s.remove(10) for list most commonly used method append and remove for set add and remove
+
+dictionary:
+	d = {}
+	d[key] = value
+	del d[key]
+d = {'name':'durga'}
+print(d['name'])
+d ['name'] = 'niyas'
+print(d['name']).      If key doesn’t exist rise keyError which stops the programme
+print(d.get(‘name’)] return None if key doesn’t exist programme continues
+# ie dict mutable
+del d['name']
+print(d)
+durga
+niyas
+{}
+del d[key]
+--------------------------------------------
+
+function
+----------
+def f1(name=’Gurest’, *a):          ------------ parameters are allowed
+name=’Guest’ is default argument, *a is variable length argument
+	stmt-1
+	stmt-2
+	stmt-3
+	return 10, 20, 30
+
+
+
+f1(10, name=’Durga)
+10 is positional arguiment, name=’Durga’ is key work argument, 
+
+f1()           -----------------            code reusability
+
+
+default argument at last
+positonl arg first
+
+def example_function(pos_arg1, pos_arg2, default_arg1=42, default_arg2='default', *args, **kwargs):
+
+--------------------------------------------------------------------------------------------------------------
+
+anonymous function 
+-------------------------
+
+s = lambda n:n*n
+print(s(4))
+
+Decorator & Generators
+-----------------------------
+
+-----------------------------
+
+modules:
+-----------------
+A group of functions, variables, classes saved to a file is called a module.
+for eg math module
+import math
+print(math.sqrt(10))
+
+adv reusability , maintainability, modulability, readability
+
+
+
+Package:
+-----------
+
+A group of related modules into a single unit is called a package
+
+__init__() ===> special method which is also known as constructor
+
+__init__.py if this file exist in a directory then that folder is considered as a package
+
+
+
+ Exception Handling:
+--------------------------
+Graceful termination of the program.
+We should not miss anything
+----------------------------------------
+
+print(stmt-1)
+try:
+	print(10/0)
+except ZeroDivisionError as msg:
+	print(“Exception raised: “, msg)
+	print(10/2)
+print(‘stmt-3’)
+
+except (ZeroDivisionError, ValueErrro) as msg: except block can handle multiple exception,
+
+try:
+	Risky code
+except:
+	Handling code 
+finally:
+	Cleanup activities
+
+try:
+    print('Hello')
+    print(10/0)
+except ValueError:
+    print('except')
+finally:
+    print('finally')           -----------  Even exception raises finally prints out and the traceback
+
+
+try:
+    print('Hello')
+    print(10/0)
+except ValueError:
+    print('except')
+else:
+    print('else')
+finally:
+    print('finally') 
+consider no exception case
+	try block will be executed
+	else block will be executed
+	finally will be executed
+
+if exception ----------         except ZeroDivisionError:
+	hello will be defenitly printed
+	exception raises except and finally block will be executed no else block
+
+except ValueError mens not running exception for related error
+	abnormal termination any way hello and finally will be printed
+
+
+
+How to define our own exceptions:
+------------------------------------------
+
+customised exceptions or user defined exceptions
+
+class TooYoungException(Exception): class is inheriting from Exception Hierarchy
+	def __init__(self,msg):
+		self.msg = msg                 self.msg must be msg for other msg s any value can use
+
+
+
+class TooYoungException(Exception):
+    def __init__(self, x):
+        self.msg = x
+
+
+class TooOldException(Exception):
+    def __init__(self, msg):
+        self.msg = msg
+
+age = int(input("Enter Your Age: "))
+
+if age < 18:
+    raise TooYoungException("You are too young for marriage(see article 223)")
+elif age > 60:
+    raise TooOldException("We will extremely try to find a match for you")
+else:
+    print("wait while we process your information and find you a match")
+
+---------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+File I/O:
+-----------
+f = open(‘abc.txt’. ‘w’)
+f.write(‘Durga\n’)
+f.write(‘Software\n’)
+f.write(‘Solutions\n’)
+
+f = open(‘abc.txt’. ‘r’)
+data = f.read()
+print(data)
+
+
+File or DB
+----------------
+import database specific module
+import cx_Oracle
+
+con = cx_Oracle.connect(‘scott/tiger@localhost’)
+cursor = con.cursor()
+
+cursor.execute(sqlquery)
+cursor.executescript(sqlqueries)
+cursor.executemany(sqlquery)
+
+insert/update/delete ==> DML               ===> commit()
+
+select
+
+cursor.fetchone()
+cursor.fetchall() ==> list
+cursor.fetchmany(n)
+
+import cx_Oracle
+con = cx_Oracle.connect(‘scott/tiger@localhost’)
+cursor = con.cursor()
+cursor.execute(‘select * from employees’)
+print(‘Employee Information’)
+print(‘*’*20)
+records = cursor.fetchall()
+for row in records:
+	print(row[0], ‘\t’, row[1], ‘\t’, row[2], ‘\t’, row[3]) 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+resource(django/durga/withoutrestm)
+Serialization:
+python object into json
+
+1. By using python inbuilt module json – json.dumps(data)
+2. By using serialize() function
+	from django.core.serializers import serializer
+3. By using rest_framework serializers
+
+<>-----------------------------------------------------------------------------------------------------------------<>
+
+[{'model': 'testapp.employee', 'pk': 1, 'fields': {'eno': 200, 'ename': 'Ragav', 'esal': 4000.0, 'eaddr': 'Hyderabad'}}, {'model': 'testapp.employee', 'pk': 2, 'fields': {'eno': 300, 'ename': 'Ram', 'esal': 3000.0, 'eaddr': 'Chennai'}}, {'model': 'testapp.employee', 'pk': 3, 'fields': {'eno': 150, 'ename': 'Madhu', 'esal': 4000.0, 'eaddr': 'Roorke'}}, {'model': 'testapp.employee', 'pk': 4, 'fields': {'eno': 500, 'ename': 'Kanaran', 'esal': 300.0, 'eaddr': 'Kerala'}}]
+
+extra data doesn’t required
+json_data = serialize(‘json’, qs) – next convert this into python data(cant play python with json)
+	serialize is responsible for providing extra data
+python_data = json.loads(json_data)
+final_list = []
+for obj in python_data:
+	emp_data = obj[‘fields’] – fields is the key for our data of interest
+	final_list.append(emp_data)
+json_data = json.dumps(final_list) – final_list is python data, converting into json
+
+the list of obj which only contains data of interest
+[{'eno': 200, 'ename': 'Ragav', 'esal': 4000.0, 'eaddr': 'Hyderabad'}, {'eno': 300, 'ename': 'Ram', 'esal': 3000.0, 'eaddr': 'Chennai'}, {'eno': 150, 'ename': 'Madhu', 'esal': 4000.0, 'eaddr': 'Roorke'}, {'eno': 500, 'ename': 'Kanaran', 'esal': 300.0, 'eaddr': 'Kerala'}]
+
+json_data = serialize('json', qs, fields=('eno', 'ename', 'eaddr')) – for further filtering
+[{'eno': 200, 'ename': 'Ragav', 'eaddr': 'Hyderabad'}, {'eno': 300, 'ename': 'Ram', 'eaddr': 'Chennai'}, {'eno': 150, 'ename': 'Madhu', 'eaddr': 'Roorke'}, {'eno': 500, 'ename': 'Kanaran', 'eaddr': 'Kerala'}]
+
+to kill running server, lsof -i :8000 note PID, sudo kill PID
+
+impliment the code in mixins.py (DRY)
+class SerializeMixin(object):
+	def serialize(self, qs):
+		json_data contains meta data, to filter it out -->
+		json_data = serialize(‘json’, qs)
+		python_data = json.loads(json_data)
+		final_list = []
+		for obj in python_data:
+			emp_data = obj[‘fields’]
+			final_list.append(emp_data)
+		json_data = json.dumps(final_list)
+		return json_data
+now set SerializeMixin as parent class for views,  call the serialize method by passing qs. (if qs is a single object container, pass it in the form of tuple)
+json_data = self.serialize(qs) / json_data = self.serialize([qs,])
+
+
+Handling Employee.DeosNotExist Exception
+try:
+	qs = Employee.objects.get(id=emp_id)
+except:
+	json_data = json.dumps({‘msg’: ‘The requested resource not available’})
+if tryblock doesn’t have any exception elseblock will be excecuted
+else:
+	json_data = self.serialize([qs,])
+return self.render_to_http_response(json_data)
+	
+	How to add status code to the response
+try:
+	qs = Employee.objects.get(id=emp_id)
+except:
+	json_data = json.dumps({‘msg’: ‘The requested resource not available’})
+	return HttpResponse(json_data, content_type= ‘application/json’, status=404)
+if tryblock doesnt have any exception elseblock will be excecuted
+else:
+	json_data = self.serialize([qs,])
+return HttpResponse(json_data, content_type= ‘application/json’, status=200)
+
+	Adding HttpResponseMixin to be DRY
+	class HttpResponseMixin(object):
+		def render_to_http_response(self, json_data, staus=200):
+			return HttpResponse(json_data, content_type= ‘application/json’, 													status=status)
+	
+	as parent class in views.py
+	try:
+		qs = Emplyee.objects.get(id=emp_id)
+	except:
+		json_data = json.dumps({‘msg’: ‘Requested id deosn’t match DB’})
+		return self.render_to_http_response(json_data, status=404)
+	else:
+		json_data = self.serialize([qs,])
+		return self.render_to_http_response(json_data)
+
+final response:
+200
+[{'eno': 200, 'ename': 'Ragav', 'esal': 4000.0, 'eaddr': 'Hyderabad'},.....................................................,{'eno': 500, 'ename': 'Kanaran', 'esal': 300.0, 'eaddr': 'Kerala'}]
+
+404
+{'msg': 'The requested resource not available'}
+
+
+
+
+
+Django tutorials || Django REST API Session
+
+ dumpdata
+1. python manage.py dumpdata testapp.Employee
+	Employee data to the console(less readable format)
+	default format is json(b/c uses django serializers.serializer)
+2. python manage.py dumpdata testapp.Employee --indent 4
+	Employee data to console(more readable format)
+3. python manage.py dumpdata testapp.Employee --format xml --indent 4
+4. python manage.py dumpdata testapp.Employee --format json > emp.json --indent 4
+	dumps empolyee data in json format into emp.json(file) whith 4 indentation
+
+
+create a record(POST)
+
+test.py (external application sending post request to django app)
+def create_resource():
+	new_emp = {
+		‘eno’: 500,
+		‘ename’: ‘Shiva’,
+		‘esal’: 5000,
+		‘eaddr’: ‘Chennai’
+	}
+	to communicate with django, dict to be converted to json
+	pip install requests
+	
+	resp = requests.post(BASE_URL + ENDPOINT, data=json.dumps(new_emp))
+	print(resp.status_code)
+	print(resp.json())
+create_resource()
+views.py
+de post(self, request):
+	json_data = json.dumps({‘msg’: ‘This is from post method’})
+	return self.render_to_http_response(json_data)
+output:
+	403
+	Forbidden (CSRF cookie not set.): /api/
+	csrf_token to be passed through form
+CSRF disable at 
+1. Mehod Level
+2. Class Level
+3. Project Level
+1)
+	from django.views.decorators.csrf import csrf_exempt
+	@csrf_exempt
+	def my_view(request):
+		....
+2)
+		from django.views.decorators.csrf import csrf_exempt
+		from django.utils.decorators import method_decorator
+		@method_decorator(csrf_exempt, name= ‘dispatch’)
+		if name is ‘post’, applied only for post request, ‘dispatch’ applied for all http method
+		class EmployeeListCBV(View):
+3) comment out CsrfViewMiddleware in settings.py
+
+partner app sending json to django
+	grab data and save to db
+	first check partner provided valid json or not
+	utils.py
+		import json
+		def is_json(data):
+		try:
+			python_data = json.loads(data)
+			loads converts json into python ,conversion successfull means partner 								provided json data is valid.
+			valid = True
+		except ValueError:
+			valid = False
+		return valid
+
+views.py
+	def post(self, request):
+		data = request.body (to access data within request)
+		valid_json = is_json(data)
+		if not valid_json:
+			json_data = json.dumps({‘msg’: ‘please send valid json data’})
+			return self.render_to_http_response(json_data, status=400)
+		json_data = json.dumps({‘msg’: ‘Validation succssfull’})
+		return self.render_to_http_response(json_data)
+output
+	200
+	{'msg': 'Validation successfull'}
+	change test.py create_resource() resp data as data=new_emp
+	400
+	{'msg': 'Provide valid data'}
+
+to save the requested data to db it is hightly recommended to use ModelForms
+(not for displaying or anything, just for internal purpose only)
+froms.py
+	from django import forms
+	class EmplyeeForm(forms.ModelForm)
+		class Meta:
+			model = Employee
+			fields = ‘__all__’
+		form vlidation
+	def clean_esal(self):
+		inputsal = self.cleaned_data[‘esal’]
+		if inputsal<5000:
+			raise forms.ValidationError(‘The minimum salary should be           										5000’)
+			return inputsal
+views.py
+	if not valid_json:
+		....
+	emp_data = json.loads(data)
+	form = EmployeeForm(emp_data)
+	if form.is_valid():
+		form.save(default=True)
+		json_data = json.dumps({‘msg’: ‘Resource Created Successfully’})
+		return self.render_to_http_response(json_data)
+	if form.errors:
+		form.errors is already a dictionary
+		json_data = json.dumps(form.errors)
+		return self.render_to_http_response(json_data, status=400)
+
+
+Django tutorials || Django REST API Session -8 
+
+How to update resource – PUT
+test.py
+def update_resource(id):
+new_emp = {
+'eno': 500,
+'ename': 'Raheem',
+'esal': 20000,
+'eaddr': 'Chennai'
+}
+# to communicate with django, dict to be converted to json
+resp = requests.post(BASE_URL + ENDPOINT + str(id) + ‘/’, data=json.dumps(new_emp))
+	print(resp.status_code)
+	print(resp.json())
+update_resource(id)
+
+views.py (class EmployeeDetailCBV)
+check object with request id exist or not 
+separate utility method inside class which returns requested object or None
+def get_object_by_id(self, emp_id):
+	try:
+		emp = Employee.objects.get(id=emp_id)
+	except Employee.DoesNotExist:
+		emp = None
+	return emp
+
+put method inside class
+def put(self, request, *args, **kwargs)
+	emp_id = self.kwargs[‘emp_id’]
+	checking availability of id match, calling utility method get_object_by_id
+	emp = self.get_object_by_id(emp_id)
+	if emp is None:
+		json_data = json.dumps({‘msg’: ‘Requested id doesn’t match with database’})
+		return self.render_to_http_response(json_data, status=404)
+	data = request.body
+	validating incoming json
+	valid_json = is_json(data)
+	if not valid_json:
+		json_data = json.dumps({‘msg’: ‘please send valid json data’})
+		return self.render_to_http_response(json_data, status=400)
+	json to dict conversion
+	provided_data = json.loads(data)
+	original_data = {
+	‘eno’: emp.eno,
+	‘ename’: emp.ename,
+	‘esal’: emp.esal,
+	‘eaddr’: emp.eaddr
+	}
+	update original data using update method
+original_data.update(provided_data)
+	print(original_data)
+	form = EmployeeForm(original_data, instance=emp)
+	if form.is_valid():
+		form.save(commit=True)
+		json_data = json.dumps({‘msg’: ‘Resource updated successfully!’})
+		return self.render_to_http_response(json_data)
+	if form.errors:
+		json_data = json.dumps(form.errors)
+		return self.render_to_http_response(json_data, status=400)
+post request to create new resource , put to update existing one
+
+
+How to delete resource – DELETE
+test.py
+def delete_resource(id):
+# to communicate with django, dict to be converted to json
+resp = requests.delete(BASE_URL + ENDPOINT + str(id) + ‘/’)
+	print(resp.status_code)
+	print(resp.json())
+delete_resource(id)
+
+views.py (class EmployeeDetailCBV)
+def delete(self, request, *args, **kwargs):
+	emp_id = self.kwargs[‘emp_id’]
+	emp = self.get_object_by_id(emp_id)
+	if emp is None:
+		json_data = json.dumps({‘msg’: ‘No Matched Resource Found, Not possible to 											perform deletion’})
+		return self.render_to_http_response(json_data, status=404)
+	delete() return tuple
+	status, deleted_item= emp.delete()
+	if status == 1:
+	
+		json_data = json.dumps({‘msg’: ‘Resource deleted successfully.’})
+		return self.render_to_http_response(json_data)
+	json_data = json.dumps({‘msg’: ‘Unable to delete...plz try again’})
+	return self.render_to_http_response(json_data, status=400)
+Tuple unpacking 
+t = (10, 20)
+a, b = t
+print(a, b)
+
+To get a perticular record info:
+	http://127.0.0.1:8000/api/1/
+To get all records:
+	http://127.0.0.1:8000/api/
+To create a resourse:
+	http://127.0.0.1:8000/api/
+To update a resource:
+	http://127.0.0.1:8000/api/1/
+To delete a resource:
+	http://127.0.0.1:8000/api/1/
+we used two end point ... (not going to meet realworld coding standards)
+django rest framework single endpoint rule...
+
+Django tutorials || Django REST API Session – 9
+To do all CRUD operation through single endpoint
+GET - METHOD
+test.py
+def get_resource(id=None):
+	data = {}
+	if id is not None:
+		data =  {
+			‘id’: id
+		}
+resp = requests.get(BASE_URL + ENDPOINT , data=json.dumps(data))
+	print(resp.status_code)
+	print(resp.json())
+get_resource()
+
+new view to handle single end point method
+views.py (class EmployeeCRUDCBV())
+def get_object_by_id(self, id):
+	...
+for both get list of resourse and get details of requested individual resource.
+def get(self, request, *args, **kwargs):
+	data = request.body
+	valid_json = is_json(data)
+	if not valid_json:
+		json_data = json.dumps({‘msg’: ‘please send valid json data’})
+		return self.render_to_http_response(json_data, status=400)
+	python_data = json.loads(data)
+	id = python_data.get(‘id’, None)
+	if id is not None:
+		emp = self.get_object_by_id(id)
+		if emp is None:
+			json_data = json.dumps({‘msg’: ‘The requested resource not available’})
+			return self.render_to_http_response(json_data, status=404)
+		json_data = self.serialize([emp,])
+		retrun self.render_to_http_response(json_data)
+	qs = Emplyee.objects.all()
+	json_data = self.serialize(qs)
+	return self.render_to_http_response(json_data)
+
+urls.py
+path(‘api/’, views.EmployeeCBVCRUD.as_view()),
+
+POST - METHOD
+test.py
+def create_resource():
+new_emp = {
+'eno': 500,
+'ename': 'Adam',
+'esal': 20000,
+'eaddr': 'Chennai'
+}
+# to communicate with django, dict to be converted to json
+resp = requests.post(BASE_URL + ENDPOINT, data=json.dumps(new_emp))
+print(resp.status_code)
+print(resp.json())
+create_resource()
+
+views.py (class EmployeeCRUDCBV())
+def post(self, request):
+data = request.body
+valid_json = is_json(data)
+if not valid_json:
+json_data = json.dumps({'msg': 'Provide valid data'})
+return self.render_to_http_response(json_data, status=400)
+emp_data = json.loads(data)
+form = EmployeeForm(emp_data)
+if form.is_valid():
+form.save()
+json_data = json.dumps({'msg': 'Data successfully added'})
+return self.render_to_http_response(json_data)
+if form.errors:
+json_data = json.dumps(form.errors)
+return self.render_to_http_response(json_data, status=400)
+
+PUT - METHOD
+test.py
+def update_resource(id):
+new_emp = {
+	‘id’: id,
+'esal': 150000,
+'eaddr': 'Vadakara'
+}
+# to communicate with django, dict to be converted to json
+resp = requests.put(BASE_URL + ENDPOINT, data=json.dumps(new_emp))
+print(resp.status_code)
+print(resp.json())
+update_resource(9)
+
+
+
+
+views.py (class EmployeeCRUDCBV())
+def put(self, request, *args, **kwargs):
+	data = request.body
+	valid_json = is_json(data)
+	if not valid_json:
+		json_data = json.dumps({‘msg’: ‘please send valid json data’})
+		return self.render_to_http_response(json_data, status=400)
+	python_data = json.loads(data)
+	id = python_data.get(‘id’, None)
+	if id is None:
+		json_data = json.dumps({‘msg’: ‘Please provide id to update’})
+		return self.render_to_http_response(json_data, status=400)
+	emp = self.get_object_by_id(id)
+	if emp is None:
+		json_data = json.dumps({‘msg’: ‘ID doesn’t match source’})
+		return self.render_to_http_response(json_data, status=404)
+	provided_data = json.loads(data)
+	original_data = {
+'eno': emp.eno,
+'ename': emp.ename,
+'esal': emp.esal,
+'eaddr': emp.eaddr
+}
+original_data.update(provided_data)
+form = EmployeeForm(original_data, instance=emp)
+if form.is_valid():
+form.save()
+json_data = json.dumps({'msg': 'Resource successfully updated!'})
+return self.render_to_http_response(json_data)
+if form.errors:
+json_data = json.dumps(form.errors)
+return self.render_to_http_response(json_data, status=400)
+
+
+	
+
+	
+
+
+DELETE - METHOD
+test.py
+def delete_resource(id):
+	data = {
+	‘id’: id
+}
+resp = requests.put(BASE_URL + ENDPOINT, data=json.dumps(data))
+print(resp.status_code)
+print(resp.json())
+delete_resource(9)
+
+views.py (class EmployeeCRUDCBV())
+def delete(self, request, *args, **kwargs)
+	data = request.body
+        	valid_json = is_json(data)
+        	if not valid_json:
+            	json_data = json.dumps({'msg': 'Provide valid data'})
+           		return self.render_to_http_response(json_data, status=400)
+        	python_data = json.loads(data)
+        	id = python_data.get('id', None)
+        	if id is not None:
+            	emp = self.get_object_by_id(id)
+            	if emp is None:
+                		json_data = json.dumps({'msg':'The requested resource not available'})
+                		return self.render_to_http_response(json_data, status=404)
+            	status, deleted_item = emp.delete()
+		if status == 1:
+            	json_data = json.dumps({'msg': 'Resource deleted successfully.'})
+            	return self.render_to_http_response(json_data)
+        		json_data = json.dumps({'msg': 'Unable to delete...plz try again'})
+        		return self.render_to_http_response(json_data, status=400)
+        	json_data = json.dumps({‘msg’: ‘Provide id of resource to be deleted’})
+        	return self.render_to_http_response(json_data, status=400)
+
+
+
+Django tutorials || Django REST API Session - 10 by Durga Sir
+startproject withoutrestm2
+startapp testapp – add in installed apps
+models.py
+class Student(models.Model):
+	name = model.CF(m_l=64)
+	roll_no = models.IF()
+	marks = models.IF()
+	address = models.CF(m_l=64)
+	phone = models.CF(m_l=64)
+
+admin.py
+class StudentAdmin(admin.ModelAdmin):
+	list_display = [‘id’, ‘name’, ‘roll_no’, ‘marks’, ‘address’, ‘phone’]
+
+admin.site.register(Student, StudentAdmin)
+makemigrations, migrate, createsuperuser, runserver, login admin, add-data
+
+get method
+views.py
+@method_decorator(csrf_exempt, name='dispatch')
+class StudentCRUDCBV(SerializeMixin, HttpResponseMixin, View):
+	if id available returns objects itself
+	def get_object_by_id(id):
+		try:
+			s = Student.objects.get(id=id)
+		except Student.DoesNotExist:
+			s = None
+		return s
+	
+	def get(self, request, *args, **kwargs):
+		data = request.body
+		valid_json = is_json(data)
+		if not valid_json:
+			return self.reder_to_http_response(json.dumps({‘msg’: ‘Provide valid 											data’}), status=400)
+		python_data = json.loads(data)
+		id = python_data.get(‘id’, None)
+		if id is not None:
+			std = self.get_object_by_id(id)
+			if std is None:
+				return self.render_to_http_response(json.dupms({‘msg’: ‘Resource 									not found for id’}), status=404)
+			return self.render_to_http_response(self.serialize([student,]))
+		qs = Student.objects.all()
+		return self.render_to_http_response(self.serialize(qs))
+
+shift+home , ctrl + u, i, b
+
+from django import forms
+from .models import Student
+# Create your forms here.
+class StudentForm(forms.ModelForm):
+
+    class Meta:
+        model = Student
+        fields = '__all__'
+
+    def clean_marks(self):
+        inputmarks = self.cleaned_data['marks']
+        if inputmarks<80:
+            raise forms.ValidationError('Marks must be greater or equal to 80')
+        return inputmarks
+
+post method 
+    def post(self, request):
+        	data = request.body
+        	valid_json = is_json(data)
+        	if not valid_json:
+            	return self.render_to_http_response(json.dumps({'msg': 'Provide valid data'}), 													status=400)
+        	emp_data = json.loads(data)
+        	form = StudentForm(emp_data)
+        	if form.is_valid():
+            	form.save()
+            	return self.render_to_http_response(json.dumps({'msg': 'Data successfully added'}))
+        	if form.errors:
+            	return self.render_to_http_response(json.dumps(form.errors), status=400)
+
+put method 
+    def put(self, request, *args, **kwargs):
+        data = request.body
+        valid_json = is_json(data)
+        if not valid_json:
+            return self.render_to_http_response(json.dumps({'msg': 'please send valid json data'}), 													status=400)
+        python_data = json.loads(data)
+        id = python_data.get('id', None)
+        if id is None:
+            return self.render_to_http_response(json.dumps({'msg': 'Please provide id to update'}), 													status=400)
+        std = self.get_object_by_id(id)
+        if std is None:
+            return self.render_to_http_response(json.dumps({'msg': 'ID doesn’t match source'}), 													status=404)
+        provided_data = json.loads(data)
+        original_data = {
+            'name': std.name,
+            'roll_no': std.roll_no,
+            'marks': std.marks,
+            'address': std.address,
+	‘phone’: std.phone,
+        }
+        original_data.update(provided_data)
+        form = StudentForm(original_data, instance=std)
+        if form.is_valid():
+            form.save()
+            return self.render_to_http_response(json.dumps({'msg': 'Resource successfully updated!'}))
+        if form.errors:
+            return self.render_to_http_response(json.dumps(form.errors), status=400)
+
+delete method
+    def delete(self, request, *args, **kwargs):
+        data = request.body
+        valid_json = is_json(data)
+        if not valid_json:
+            return self.render_to_http_response(json.dumps({'msg': 'Provide valid data'}), status=400)
+        python_data = json.loads(data)
+        id = python_data.get('id', None)
+        if id is not None:
+            emp = self.get_object_by_id(id)
+            if emp is None:
+                    return self.render_to_http_response(json.dumps({'msg':'The requested resource not 										available'}), status=404)
+            status, deleted_item = emp.delete()
+            if status == 1:
+                return self.render_to_http_response(json.dumps({'msg': 'Resource deleted 													successfully.'}))
+            return self.render_to_http_response(json.dumps({'msg': 'Unable to delete...plz try again'}), 												status=400)
+        return self.render_to_http_response(json.dumps({'msg': 'Provide id of resource to be deleted'}), 												status=400)
+
+
+				
+
+	
+		
+	
+
+
+	 
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+REST API Session – 11 DRF Introduction
+Developing WEB APIs by using 3rd party Django REST Framework(DRF):
+Other frameworks
+1. DRF
+2. Tastify
+etc
+
+Speciality DRF:
+1. Browsable API (we used python app to test.py python app to test our api now in DRF we can use the DRF Browsable API)
+
+2. Security: TokenAuthentication, Oauth, Json Window Token Authentication
+
+3. Serializers both ORM and Non – ORM(no need to create serializers our own)
+
+4. Extensive Documentation available , great community support too.
+
+5. Trusted by world top companies
+
+djanogproject.com
+django-rest-framework.org
+
+Installation
+Pip install djangorestframework
+pip install markdown # markdown support for the browsable API.
+pip install django-filter # Filtering support 
+
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+django-admin startproject withrestc1
+python manage.py startapp testapp
+settings.py
+	add testapp
+	add rest_framework # 3rd party app
+urls.py
+	add path from django-rest-framework.org 
+
+Serializers:
+DRF Serializers are responsible for:
+1. Serialization
+2. Deserialization
+3. Validation
+
+class EmployeeForm(forms.Form): EmployeeSeializer(rest_framework.serializers.Serializer)
+	eno = forms.IntegerField()
+	...
+
+class EmployeeForm(forms.ModelForm): (serializers.ModelSerializer)
+	class Meta:
+		model = Employee
+		fields = ‘__all__’
+drf serializer concept exactly work as forms and ModelForm
+
+1. Serialization
+Just create model
+class Employee(models.Model)
+	eno if 
+	ename cf ml-64
+	esal ff
+	eaddr cf ml-64
+
+serializers.py
+	from rest_framework import serializers
+
+	class EmployeeSerializer(serializer.Serializer):
+		if normal form all the fields, if Model Serializer, not need to define fields
+
+		eno serializers.if 
+		ename serializers.cf ml-64 not mandatory
+		esal serializers.ff
+		eaddr serializers.cf ml-64 not mandatory
+
+makemigrations
+migrate
+createsuperuser
+
+admin.py
+	register.Employee – ModelAdmin
+
+Employee object is not python native data type or python inbuild data type (eg: int, list, dict, tuple) it is a model object which is complex data type(eg: model object, instance, query-set).
+The process of converting complex data type into python native data type is defaultly considered as serialization
+
+employee object --> to dict --> json (very easy)
+
+how to convert python native data type(dict) to json data:
+From rest_framework.renderers import JSONRenderer
+json_data = JSONRenderer().render(emp_serializer.data)
+data is string thats why (‘) outside the curly braces , and b stands for bytes data is transfered across the network in the form of binary data type
+exersise:
+	shell
+		import Employee
+		from testapp.serializers import EmployeeSerializer
+		get emp one, model instance / object
+		emp = Employee.objects.get(id=1)
+		emp_serializer = EmployeeS(emp)
+		emp_serializer.data
+		From rest_framework.renderers import JSONRenderer
+		json_data = JSONRenderer().render(emp_serializer.data)
+
+		?? serialize emp id=3
+
+How to perform serialization for qs:
+qs = Employee.objects.all()
+emp_serializer = EmployeeS(qs, many=True)
+emp_serializer.data
+json_data = JSONRenderer().render(emp_serializer.data) – data represented in the form of list of tuples
+
+REST API SESSION – 12 Serializers
+Deserialization:
+The process of converting python native data types into database supported complex types is called deserialization.
+
+Partner is gonna send data in the form of json, first, convert json into python native data type.
+Import io
+from rest_framework.parsers import JSONParser
+stream = io.BytesIO(json_data)
+pdata = JSONParser().parse(stream)
+
+by deserialization we have to convert python data to db supported complex type:
+serializer = EmployeeS(data=pdata)
+serializer.is_valid():
+serializer.validated_data
+
+User case of Serializatoin and Deserialization:
+----------------------------------------------------------------------
+1. Partner application wants all employee records in json format qs ---> python native data type(serialization) python native data type ---> json data (JSONRenderer().render())
+
+2. Partner application sending json data to create a new employee json data --> python native data type(JSONParser().parse()) python native data type ---> data base supported complex form(Deserialization)
+
+withrestc1	testapp		views.py
+import io
+from djanog.views.generic import View
+from rest_framework.parsers import JSONParser
+
+drf has most beautifull views APIView, ViewSet
+
+class EmployeeCRUDCBV(View):
+	def get(self, request, *args, **kwargs):
+		json_data = request.body
+		stream = io.BytesIO(json_data) – can use json.loads / but this is the rest way
+		pdata = JSONParser().parse(stream) – parse only accepts stream
+		id = pdata.get(‘id’, None)
+		if id is not None:
+			emp = Employee.objects.get(id=id)
+			emp_serializer = EmployeeS(emp)
+			json_data = JSONRenderer().render(emp_serializer.data)
+			return HttpResponse(json_data, content_type=’application/json’, status=200)
+		qs = Employee.objects.all()
+		qs_serializer = EmployeeS(qs, many=True)
+		json_data = JSONRenderer().render(qs_serializer.data)
+		return HttpResponse(json_data, content_type=’application/json’, status=200)
+
+main urls.py
+path(‘api/’, views.EmployeeCRUDCBV.as_view())
+
+post operation
+Need to over ride create method in serializer
+serializers.py
+def create(self, validated_data):
+	return Employee.objects.create(**validated-data)
+	with all the validated key value pair please create
+
+views.py
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import mthod_decorators
+@method_decorators(csrf_exempt, name=’dispatch’)	
+
+def post(self, request, *args, **kwargs):
+	json_data = request.body
+	streams = io.BytesIO(json_data)
+	pdata = JSONParser().parse(stream)
+	serializer = EmployeeSerializer(data=pdata)
+	if serializer.is_valid():
+		serializer.save()
+		msg = {‘msg’: ‘resource created successfully’}
+		json_data = JSONRenderer().render(msg.data)
+		return HttpResponse(json_data, content_type=’application/json’, status=200)
+	json_data = JSONRenderer().render(serializer.errors)
+	return HttpResponse(json_data, content_type=’application/json’, status=200)
+	
+	
+------------------------------------------------------------------------------------------------------------------------
+Django with realtime project (extra)
+Pip install faker
+from faker import Faker
+faker = Faker()
+print(faker.city())
+print(faker.address())
+print(faker.name())
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+		
+
+
+		
+
+
+
+
+
+
+
+
