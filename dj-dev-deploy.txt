@@ -1,0 +1,1566 @@
+1.
+2.
+3.
+4. Resource Links
+5. Python 3.7.0 -->
+8. Variables and Data Types
+for comments # and “”” “””
+“””
+VARIABLE RULES:
+- Variable names are case sensitive (name and NAME are different variables)
+- Must start with a letter or an underscore
+- Can have numbers but can not start with one
+ “””
+x = 1			# int 
+y = 2.5			#float
+name = ‘Brad’		#string
+is_cool = True		#bool
+
+# Multiple assignment
+x, y, name, is_cool = (1, 2.5, ‘Brad’, True)
+
+print(x, y, name, is_cool)
+
+# Basic math
+a = x + y
+
+#Check type
+print(type(is_cool))
+
+# Casting
+x = srt(x) before it was an int now str
+y = int(y) converts 2 to 2.5
+print(type(x))
+
+9. Strings and Formatting
+name = ‘Brad’
+age = 37
+
+# Concatenate
+print(‘Hello my name is ‘ + name + ‘ and im ‘ + str(age))
+
+# Arguments by position
+print(‘{}, {}, {}’.format(‘a’, ‘b’, ‘c’))
+print(‘{1}, {2}, {0}’.format(‘a’, ‘b’, ‘c’))
+
+# Argument by name
+print(‘My name is {name} and im {age}.’.format(name=name, age=age))
+
+# F-Strings (only in 3.6+)
+print(f’My name is {name} and im {age}’)
+
+
+# String Methods
+s = ‘hello there world’
+print(s.capitalize()) - first letter uppercase
+print(s.upper()) - all uppercase
+print(s.lower()) - all lower case
+print(s.swapcase()) - inverses cases
+print(len(s)) – length of string
+print(s.replace(‘world’, ‘everyone’)) – replace s’s ‘world’ with ‘everyone’
+
+# Count 
+sub = ‘h’
+print(s.count(sub))
+
+# Starts with
+print(s.startswith(‘hello’))
+
+# Ends with
+print(s.endswith(‘d’))
+
+# Split into a list
+print(s.split())
+
+# Find position
+print(s.find(‘r’))
+
+# Is all alphanumeric
+print(s.isalnum())
+
+# Is all alphabetic
+print(s.isalpha())
+
+# Is all numeric
+print(s.isnumeric())
+
+10. Lists
+# A List is a collection which is ordered and changeable. Allows duplicate members.
+
+# Create list
+Numbers = [1, 2, 3, 4, 5]
+print(type(Numbers))
+
+# Using a constructor
+numbers = list((1, 2, 3, 4, 5))
+fruits = [‘Apples’, ‘Oranges’, ‘Grapes’, ‘Pears’]
+
+# Get value
+print(fruits[1])
+
+# Get length
+print(len(fruits))
+
+
+# Append to list
+fruits.append(‘Mango’)
+print(fruits)
+
+# Remove from list
+fruits.remove(‘Grapes’)
+
+# Insert into position
+fruits.insert(2, ‘Strawberries’)
+
+# Remove from position
+fruits.pop(3)
+
+# Reverse list
+fruits.reverse()
+
+# Sort list
+fruits.sort()
+
+# Reverse sort
+fruits.sort(reverse=True)
+
+11. Tuples and Sets
+# A Tuple is a collection which is ordered and unchangeable. Allows duplicate members.
+
+# Simple tuple 
+fruit_tuple = (‘Apple’, ‘Orange’, ‘Mango’)
+
+# Using constructor
+fruit_tuple = tuple((‘Apple’, ‘Orange’, ‘Mango’))
+
+# Get single value
+print(fruit_value[1])
+
+# Cannot change value
+fruit_tuple[1] = ‘Grape’
+
+# Tuples with one vlaue should have trailing comma
+fruits_2 = (‘Apple’) – print(fruits_2) – outputs string not tuple – fruits_2 = (‘Apple’,) 
+
+# Delete fruits_2 tuple
+del fruits_2
+
+# A set is a collection which is unordered and unindexed. No duplicate members.
+
+# Create set 
+fruit_set = {‘Apple’, ‘Orange’, ‘Mango’, ‘Apple’} – No duplication allowed
+fruit_set = {‘Apple’, ‘Orange’, ‘Mango’}
+
+
+# Check if in set
+print(‘Apple’ in fruit_set)
+
+# Add in set
+fruit_set.add(‘Grape’)
+
+# Remove in set
+fruit_set.remove(‘Grape’)
+
+# Clear set
+fruit_set.clear()
+
+# Delete set
+del fruit_set
+
+12. Dictionaries
+# A Dictionary is a collection which is unordered, changeable and indexed. No duplicate members.
+
+# Simple dict
+person = {
+	‘first_name’: ‘Jhon’,
+	‘last_name’: ‘Doe’,
+	‘age’: 30 }
+print(person)
+
+# Using a constructor
+person = dict(first_name=’Jhon’, last_name=’Doe’, age=30)
+
+# Access value
+print(person[‘first_name’])
+print(person.get(‘last_name’))
+
+# Add key/value
+person[‘phone’] = ‘555-555-555’
+
+# Get keys
+print(person.keys())
+
+# Get items
+print(person.items())
+
+# Make copy
+person2 = person.copy()
+person2[‘city’] = ‘Boston’
+print(person2)
+
+# Remove item
+del(person[‘age’])
+person.pop(‘phone’)
+
+# Clear
+person.clear()
+# Get length
+print(len(person2))
+
+# List of dict
+people = [
+	{‘name’: ‘Martha’, ‘age’: 40},
+	{‘name’: ‘Bob’, ‘age’: 20}
+]
+print(people[1][‘name’])
+
+13. Functions
+# A function is a block of code which only runs when it is called. In python, we do not use parentheses and curly brackets , we use indentation with tabs or spaces 
+
+# Create function
+def sayHello(name): - passing arguiment if not same not passed, def sayHello(name=’sam’):
+	print(“Hello” + name)
+sayHello(‘Sam’)
+
+# Return value
+def getSum(num1, num2):
+	total = num1 + num2
+	return total
+print(getSum(4, 5))
+numSum = getSum(2,3)
+print(numSum)
+
+def addOneToNum(num):
+	num = num + 1 / num += 1
+	return num
+num = 5
+new_num = addOneToNum(num)
+print(new_num)
+
+
+# A lambda function is a small anonymous function.
+# A lambda function can take any number of arguments, but can only have one expression. Very simmilar to JS arrow functions.
+
+getSum = lambda num1, num2 : num1 + num2
+print(getSum(9, 2)
+
+addOneToNum = lambda num : num + 1
+print(addOneToNum(5))
+
+14. Conditionals
+# if / Else conditions are used to decide to do something based on something being true or false
+
+x = 10
+y = 6
+
+# Comparison Operators (==, !=, >, <, >=, <=) - Used to compare values
+
+
+# Simple if 
+if x == y:
+	print(f’{x} is equal to {y}’)
+
+# If / else
+if x > y:
+	print(f’{x} is greater than {y}’)
+else:
+	print(f’{x} is less than {y}’)
+
+# elif
+if x > y:
+	print(f’{x} is greater than {y}’)
+elif x == y:
+	print(f’{x} is equal to {y}’)
+else:
+	print(f’{x} is less than {y}’)
+
+# Nested if 
+if x > 2:
+	if x <= 10:
+		print(f’{x} is less than 2 and greater than 10’)
+
+#Logical operators (and, or, not) – Used to combine coditional statements
+
+# and 
+if x > 2 and <= 10: both has to satisfied 
+	print(f’{x} is less than 2 and greater than 10’)
+
+#or 
+if x > 2 or <= 10: one has to satixfied
+	print(f’{x} is less than 2 or greater than 10’)
+
+# not 
+if not(x == y):
+	print(f’{x} is not equal to {y}’)
+
+# Membership Operators (not, not in) – Membership operators are used to test if a sequence is presented in an object
+
+# in
+numbers = [1, 2, 3, 4, 5]
+if x in numbers:
+	print(x in numbers)
+
+# not in 
+if x not in numbers:
+	print(x in numbers)
+	
+
+
+
+# Identity Operators (is, is not) – Compare the objects, not if they are equal, but if they are actually the same object, with the same memory location:
+
+# is 
+if x is y:
+	print(x is y)
+
+# is not 
+if x is not y:
+	print(x is not y)
+
+
+15. Loops
+# A for loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).
+
+people = [‘jhon’, ‘will’, ‘janet’, ‘karen’]
+
+# Break out
+for person in people:
+	print(f’Current person {person}’)
+	print(‘Cureent person ‘, person)
+	if person == ‘janet’:
+		break
+
+# Continue
+for person in people:
+	if person == ‘janet’:
+		continue
+	print(‘Cuttent person: ‘, person
+
+# Range
+for i in range(len(people)):
+	print(‘Current person: ‘, people[i])
+
+for i in range(0, 11):
+	print(‘Number: ’, i)
+	
+# While loops execute a set of statements as long as a condition is true.
+Count = 0 
+while count is <= 10:
+	print(‘Count: ‘, count)
+	count += 1
+
+16. Modules
+# A module is basically a file containing a set of functions to include in your application. There are core python modules, modules you can install using the pip package manager (including Django) as well as custom modules.
+
+# Core modules
+import datetime
+today = datetime.date.today()
+print(today)
+
+from datetime import date
+today = date.today()
+print(today)
+
+import time
+timestamp = time.time()
+print(timestamp)
+
+from time import time
+timestamp = time()
+print(timestamp)
+
+pip3 install camelcase
+pip freeze
+
+# pip module
+import camecase
+
+camel = camelcase.CamelCase()
+text = “Hello there world!”
+print(camel.hump(text))
+
+# Example of a custom module to be imported
+import re
+def vlaidate_email(email):
+	if len(email) > 7:
+		return bool(re.match(“^.+@(\[?)a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?)$”, email))
+
+import validator
+email = ‘test@test.com’
+if validator.validate_email(email):
+	print(‘Email is valid’)
+else:
+	print(‘Not an emil’)
+
+from validator import validate_email
+if validate_email(email):
+	print(‘Email is valid’)
+else:
+	print(‘Not an emil’)
+
+
+
+
+
+
+
+
+
+17. Classes
+# A class is like a blueprint for creating objects, An object has properties and methods(functions) associated with it. Almost everything in python is an object.
+
+# Create class
+class User:
+	# Constructor
+	def __init__(self, name, email, age):
+		self.name = name
+		self.email = email
+		self.age = age
+
+	def greeting(self):
+		return f'My name is {self.name} and I am {self.age}'
+
+	def has_birthday(self):
+		self.age += 1
+		return self.age
+
+# Create subclass from User
+class Customer(User):
+    def __init__(self, name, email, age, balance):
+        super().__init__(name, email, age)
+        self.balance = balance
+
+    def greeting(self):
+        user_greeting = super().greeting()  # Call the parent class's greeting method
+        return f"{user_greeting} and I owe a balance of {self.balance}."
+
+    def set_balance(self, balance):
+        self.balance = balance
+	
+# Init user object 
+brad = User('Brad', 'brad@email.com', 37)
+janet = User('Janet','janet@email.com', 27)
+
+print(brad.name, brad.age, brad.email)
+print(janet.email)
+
+# Edit property
+brad.age = 38
+
+# Call has_birthday and increase janets age by 1.
+janet.has_birthday()
+
+# Call greeting method
+print(janet.greeting()) 
+
+# Init customer
+murali = Customer('Murali', 'murali@email.com', 45, 1500)
+print(murali.name, murali.email, murali.age, murali.balance)
+print(murali.greeting())
+print(murali.has_birthday())
+
+# Call set_balance method
+murali.set_balance(500)
+print(murali.balance)
+
+18. File
+myFile = open(‘myfile.txt’, ‘w’)
+
+run files.py – creates myfile.txt
+
+# Get some info
+print(‘Name: ‘, myFile.name)
+print(‘Is Closed: ‘, myFile.closed)
+print(‘Opening Mode: ‘, myFile.mode)
+
+#  Write to file 
+myFile.write(‘I Love Python’)
+myFile.write(‘ and J S’)
+myFile.close()
+
+# Append to file
+myFile = open(‘myfile.txt’, ‘a’) if ‘w’ it will replace the whole with new one
+myFile.write(‘ I also like php’)
+myFile.close()
+
+# Read from file
+myFile = open(‘myfile.txt’, ‘r+’)
+text = myFile.read(10)
+print(text)
+
+19. Working With JSON
+# JSON is commonly userd with data APIS. Here how we can parse JSON into a python dictionary.
+
+Import json
+# Sample JSON
+
+userJSON = ‘{“first_name”: “John”, “last_name”: “Doe”, “age”: 30}’
+
+# Parse to dict
+user = json.loads(userJSON)
+
+print(user)
+pritn(user[f’irst_name’])
+
+# dict to json
+car = {‘make’: ‘Ford’, ‘model’: ‘Mustang’, ‘year’; 1970}
+carJSON  = json.dumps(car)
+print(carJSON)
+
+
+
+22. Virtual environment setup 23. Django Install & Project Setup
+pyenv virtualenv 3.10.12 devtodeployment
+pyenv activate devtodeployment
+pyenv deactivate
+python3 -m venv venv
+source venv/bin/activate
+deactivate
+pip install django
+django-admin help
+btre_project
+cd btre_project , git init
+touch .gitignore
+visit gitignore.io (search – django)
+git add . && git commit -m ‘initial commit’
+
+24. Exploring The Initial Files & Running The Server
+python manage.py runserver
+localhost:8000 (rather than clicking on the link)
+
+makemigrations
+migrate
+runserver
+db.sqlite3 – not for real production application nice for testing , prototyping, little traffic, little data (gitignore)
+__pycache__ - make your program start little faster 
+settings.py
+	secret key – never share not include in github repo
+	debug – True for dev false for production (shows error, warning)
+	allowed hosts – ip address, domain name
+
+25. Creating The Pages App
+python manage.py startapp pages
+
+settings.py
+page.apps.PagesConfig
+
+create urls.py
+from django.urls import path
+from . Import views
+urlpatterns = [
+	path(‘’, views.index, name=’index’),
+]
+
+views.py
+from django.http import HttpResponse
+
+def index(request):
+	return HttpResponse(‘<h1>Hello World</h1>’)
+
+urls.py
+path(‘’, include(‘pages.urls’)), 
+
+26. Pages Templates & Base Layout
+creating templates at root
+settings.py
+	‘dirs’: [os.path.join(BASE_DIR, ‘templates’)],
+templates
+	i like to categorise templates
+	pages
+		index.html
+		about.html
+
+index.html
+h1 Home
+
+about.html
+h1 About
+
+pages urls.py
+path(‘about’, views.about, name=’about’),
+
+pages views.py
+def index(request):
+	return render(request, ‘pages/index.html’)
+
+def about(request):
+	return render(request, ‘pages/about.html’)
+
+inside templates base.html (not to repeat)
+	!
+	title BT Real Estate
+	{% block content %}
+	{% endbock %}
+
+index.html about.html
+	{% extends ‘base.html’ %}
+	{% block content %}
+	..........
+	{% endblock %}
+
+install jinja extension
+
+
+
+
+
+
+
+
+
+
+
+
+
+27. Static Files & Paths
+level of settings.py create static
+bring css js and webfonts from assets and create img folder
+img
+	4 images from img of assets and lightbox
+
+settings.py
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')  #during the "collectstatic" management command.
+STATIC_URL = '/static/'  #{% static 'css/style.css' %}
+STATIC_ROOT = os.path.join(BASE_DIR, ‘static’)
+.....
+STATICFILES_DIRS = [
+	os.path.join(BASE_DIR, ‘btre/static’)
+]
+
+python manage.py collectstatic - create static folder in root and dumps static files in it.
+
+Add /static to gitignore, remember to add / infront of media in gitignore
+
+28. Bootstrap Layout Markup
+starting implimenting bootstrap theme
+btre_theme , dist, index.html
+	font awesome to custom c – p
+	BT Real Estate
+	<!-- Lightbox
+	.................................................lightbox.min.css
+	3 script cp
+
+at very top of base.html
+	{% load static %}
+
+change href to {% static ‘css/all.css’ %} same with bootstrap.css and style.css and lightbox.min.css
+
+
+script {% static ‘js/jquery-3.3.1.min.js’ %}
+	...
+	js/lighbox.min.js
+	js/main.js
+
+index.html
+top bar and nav bar c-p right above block content
+footer c-p after block content in base.html
+
+separate folder inside templates partials
+inside partials _navbar.html, _topbar.html, _footer.html cp topbar navbar footer.......
+
+in base.html
+comment top bar
+{% include ‘partials/__topbar.html’ %}
+....
+c navbar
+c main content
+c footer
+go to _navbar top {% load static %} {% static ‘img/logo.png’
+29. Index, About & Linking
+content above footer to including showcase cp
+index.html
+replace h1
+
+same with about.html
+
+below extends {% load statics %}
+static ‘img/about.jpg’
+
+{% if ‘/’ == reques.path %} active {% else %} {% endif %}
+{% if ‘about’ in request.path %}
+
+30. Listings URLs & Template
+create apps listings and realtors
+
+templates
+	listings
+		listing.html h1 listing extends base.html block content endblock
+		listings.html h1 listings ‘’
+		search.html h1 search ‘’
+
+listings urls.py
+	path(‘’, views.index, name=’listings’),
+	path(‘<int:listing_id>/’, views.listing, name=’listing’),
+	path(‘search/’, views.search, name=’search’),
+
+btre urls.py
+	path(listings/’
+
+add in settings.py both
+
+listings views.py
+def index(request):
+	return render(request, ‘listings/listings.html’)
+
+def listing(request):
+	return render(request, ‘listings/listing.html’)
+
+def search(request):
+	return render(request, ‘listings/search.html’)
+
+cp from listings.html
+
+featured listings to listings in nav / highlight
+	
+	
+
+
+
+
+
+31. Install Postgres & PgAdmin
+sudo -u postgres psql
+psqluser, pass: hellotesting@123
+create database btredb owner admin; pass admin98@psql
+\l
+\q exit
+
+postgres=# create user screenplayuser with password 'hellotesting@123';
+CREATE ROLE
+postgres=# grand all privileges on myproject to screenplayuser;
+ERROR:  syntax error at or near "grand"
+LINE 1: grand all privileges on myproject to screenplayuser;
+        ^
+postgres=# grant all privileges on myproject to screenplayuser;
+ERROR:  relation "myproject" does not exist
+postgres=# grant all privileges on database myproject to screenplayuser;
+GRANT
+postgres=# \l
+
+32. Django Postgres Setup & Migrate
+pip install psycopg2
+pip install psycopg2-binary
+settings.py
+	‘default’: {
+		‘ENGINE’: ‘django.db.backends.postgresql’,
+		‘NAME’: ‘btredb’,
+		‘USER’: ‘admin’,
+		‘PASSWORD’: ‘admin98@psql’,
+		‘HOST’: ‘localhost’
+	}
+
+migrate
+
+check pgadmin btredb
+
+33. Planning Our Schemas | 34. Create Listing Model
+MODEL/DB FIELDS
+
+listings models.py
+
+### LISTING Listing(models.Model):
+id: INT
+
+realtor INT (FOREIGN KEY [realtor]) models.FK(Realtor, on_delete=models.DO_NOTHING)
+from realtors.models import Realtor
+
+titile: STR charf, max_l 200
+address: STR charf, max_l 200
+city: STR charf, max_l 100
+state: STR charf, max_l 100
+zipcode: STR charf, max_l 20
+description: TEXT textf, blank=True
+price: INT intergerf
+bedrooms: INT integerf
+bathrooms: INT decimalfield(max_digits=2, decimal_places=1) limited to 99.9 max value
+garage: INT [0] integerf(default=0)
+sqft: INT intergerField()
+lot_size: FLOAT decimalfield(max_digit=5, decimal_places=1)
+is_published: BOOL [true] boolf(d=True)
+list_date: DATE datetimefield(default=datetime.now, blank=True) from datetime import datetime
+
+photo_main: STR (we are not storing the image but the location) imgfield(upload_to=’photos/%Y/%m/%d/’)
+
+photo_1: STR ‘’ blank=True
+photo_2: STR ‘’ ‘’
+photo_3: STR ‘’ ‘’
+photo_4: STR ‘’ ‘’
+photo_5: STR ‘’ ‘’
+photo_6: STR ‘’ ‘’
+
+def __str_(self):
+	return self.title
+
+realtors models.py
+
+### REALTOR
+id: INT
+name: STR cf(ml200)
+photo: STR if(u_t=’photos/%Y/%m/%d/’)
+description: TEXT tf(blank=True)
+email: STR ef(
+phone: STR cf(ml20)
+is_mvp: BOOL [False] bf(df=False
+hire_date: DATE dtf(default=datetime.now, blank=true)
+def __str__(self):
+	return self.name
+
+makemigrations
+
+python manage.py sqlmigrate listings 0001
+
+migrate
+
+pip install pillow
+
+### CONTACT
+id: INT
+user_id: INT 
+listing: INT
+listing_id: INT
+name: STR
+email: STR
+phone: STR
+message: TEXT
+contact_date: DATE
+
+check django doc : model field reference
+
+36. Create Superuser & Register Models With Admin
+python manage.py createsuperuser
+admin
+admin@email.com
+testing321
+
+
+
+admin.py listings
+
+from .models import Listing
+
+admin.site.register(Listing)
+
+do same for realtors
+
+37. Media Folder & Adding Data
+MEDIA_ROOT = os.path.join(BASE_DIR, ‘media’)
+MEDIA_URL = ‘/media/’
+
+main urls.py
+
+] + static(settings.MEDIA_URL, doucument_root=settings.MEDIA_ROOT)
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+add realtors
+Kyle Brown, im from resource, lorem, 555-555-555, kyle@email.com, 2017-05-11(date field)
+Mark Hudson, ‘’ , lorem, 444-444-444, mark@email.com, 2018-04-11, 
+Jenny Johnson, ‘’ , lorem, 333-333-333, jenny@email.com, 2011-06-01
+
+kyle, 45 Drivewood Cir, ‘’, Norwood, MA, 02062, lorem, 490000, 3, 2, 2, 3298, 2.3, home1, home inside 1 2 3 4 5 6 
+
+Mark, 18 Jefferson Lane, ‘’, Woubour, MA, lorem, 550000, 4, 2.5, 1, 3100, 1.5 home2, home inside 1, 2, 3
+
+jenny, 187 Woodrow Stree, ‘’, Salem, MA, 123123, lorem, 580000, 3, 3, 1, 3400, 1 home3, home inside 1, home inside3, 5
+
+mark, giffard, belford, nh, 123123, lorem, 323000, 3, 2.5, 2, 2900, 4.5, home4, hi1, hi2
+
+kayle, 12 United Road, ‘’, South Hampton, 93272, lorem, 230000, 3, 1.5, 1, 1980, 3.2, home 5, hi1, 2, 3, 
+
+kayle, 33 Essex Circle, ‘’, Lexignton, MA, 01731, lorem, 780000, 5, 4, 1, 5023, 1.7, home6, hi3, 4, 5 ,6 or all 
+
+38. Admin Logo & CSS
+templates
+	admin
+		base_site.html
+			{% extends ‘admin/base.html’ %}
+			{% load static %}
+			
+			{% block branding %}
+				h1 id head
+					img class brand_img src {% static ‘img/logo.png’ alt BT R E 50 80 height width> Adimn Area
+			{% endblock %}
+
+{% block extastyle %}
+	link {% static ‘css/admin.css’
+endblock
+
+static
+	css
+		admin.css
+			#header { 
+height: 50px;
+background: #10284e;
+color: #fff
+}
+			#branding h1 {
+				color: #fff;
+				}
+			
+			a:link,
+			a:visited {
+				color: #10284e;
+			}
+
+			div.breadcrumbs {
+				background: #30caa0;
+				color: #10284e;
+			}
+			div.breadcrumbs a {
+				color: #333
+			}
+
+			cp {
+				background: #30caa0;
+			}
+
+			cp {
+				background: 10284e
+				color #fffb
+
+39. Customize Admin Display Data
+class ListingAdmin(admin.ModelAdmin):
+	list_display = (‘id’, ‘title’, ‘is_published’, ‘price’, ‘list_date’, ‘realtor’)
+	list_display_links = (‘id’, ‘title’)
+	list_filter = (‘realtor’,)
+	list_editable = (‘is_published’,)
+	search_fields = (‘title’, ‘description’, ‘address’, ‘city’, ‘state’, ‘zip_code’, ‘price’)
+	list_per_page = 25
+
+class RealtorAdmin(admin.ModelAdmin):
+	list_display = (‘id’, ‘name’, ‘email’, ‘hire_date’)
+	list_display_links = (‘id’, ‘name’)
+	search_fields = (‘name’,)
+	list_per_page = 25	
+
+40. Pull Data From Listings Model
+listing index views.py
+listings = Listing.objects.all()
+context = {
+	‘listings’: listings
+}
+pass context
+pip install pylint-django
+
+41. Display Listings In Template
+{{ listing.title }}
+{{ listing.photo_main.url }}
+${{ listing.price | intcomma }}
+settings.py
+	installed apps
+		add ‘django.contrib.humanize’,
+
+{% load humanize %}
+{{ lising.city {{ listing.state {{ listing.zip_code 
+Sqft: {{ listing.sqft
+Garage: {{ listing.garage
+Bedrooms: {{ listing.bedroom
+Bathrooms: {{ listing.bathroom
+{{ lisitng.realtor
+{{ listing.list_date | timesince
+
+add detail url
+add lisiting_id in def listing
+
+42. Pagination, Order & Filter
+from django.core.paginator import EmptyPage, PageNotInteger, Paginator
+def index
+
+listings .... .order_by(‘-list_date’).filter(is_published=True)
+paginator = Paginator(listings, 3)
+page = request.GET.get(‘page’)
+paged_listings = paginator.get_page(page)
+
+pass paged_listings to context
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row">
+      <div class="col-md-12">
+        {% if listings.has_other_pages %}
+          <ul class="pagination">
+            {% if listings.has_previous %}
+              <li class="page-item">
+                <a href="?page={{listings.previous_page_number}}" class="page-link">&laquo;</a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <a class="page-link">&laquo;</a>
+              </li>
+            {% endif %}
+            {% for i in listings.paginator.page_range %}
+              {% if listings.number == i %}
+                <li class="page-item active">
+                  <a class="page-link">{{i}}</a>
+                </li>
+              {% else %}
+                <li class="page-item">
+                  <a href="?page={{i}}" class="page-link">{{i}}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+            {% if listings.has_next %}
+              <li class="page-item">
+                <a href="?page={{listings.next_page_number}}" class="page-link">&raquo;</a>
+              </li>
+            {% else %}
+              <li class="page-item disabled">
+                <a class="page-link">&raquo;</a>
+              </li>
+            {% endif %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+43. Home & About Page Dynamic Content
+from listings.models import Listing
+def index
+	listings = Listing.order_by(‘-list_date).filter(is_published)[:3]
+	context = {
+		‘listings’: listings
+	} pass
+
+cp from listings.html for index.html to show latest three listings
+
+for about page that is def about
+realtors = Realtor.object.order_by(‘-hire_date’)
+
+# Get MVP
+mvp_realtors = Realtor.objects.all().filter(is_mvp=True)
+
+pass context
+
+about.html
+
+above col-md-4
+{% if realtors %}
+	{% for realtor in realtors %}
+	{% endfor %}
+	col-md-4
+{% else %}
+	div col-md-12
+	p No Realtors Available
+{% endif %}
+
+mvp
+under col-md-4
+if mvp_realtors
+for realtor in mvp_realtors
+	div card
+endfor
+
+44. Single Listing Page
+copy markup from resource
+get_object_or_404
+listing = get_o_o_404(Listing, pk=listing_id)
+pass
+
+if listing.photo_1
+
+45. Search Form Choices
+inside listings
+	choices.py
+		cp from github
+	
+
+	
+in pages.py
+	from listings.choices import price_choices, bedroom_choices, state_choices
+	add in context above 3, with same key
+
+for key value in state_choices.items
+	option value=”{{ key }}”>{{ value }}</option>
+
+bedroom
+and
+price
+
+form action {% url ‘search’ %}
+urls.py
+	search
+views.py
+
+search.html
+	add markup from resource
+	extends base.html
+	load humanize
+	block content
+	endblock
+	choices in lisitngs views.py def search
+	choices in search.html
+
+46. Search Form Filtering
+queryset_list = Listing.objects.order_by(‘-list_date’)
+
+# Keywords
+if ‘keywords’ in request.GET:
+	keyword = request.GET[‘keyworkd’]
+	if keywords:
+		#we are checking wheather the model field description matches a keyword eg:(pool)
+		queryset_list = queryset_list.filter(description__icontains=keywords)
+		#Note: iexact is case insensitive 
+			icontains is case insensitive
+			exact is case sensitive
+
+pass in context ‘listings’
+listings.html if to endit paste in search.html
+remove pagination
+
+# City
+if city ............
+	city ........
+	if city:
+		city__iexact
+
+#State
+
+#Bedrooms
+	(bedrooms__lte=bedrooms)
+
+price also same as bathrooms
+
+price is not working 
+
+47. Preserving Form Input
+in listings views.py def search
+add in context ‘values’: request.GET
+add in keyword input in search.html values=”{{ values.keyword }}”
+for optional fields
+in option after value {% if key == values.state %} selected {% endif %}	
+					      .bedrooms
+					      .price
+
+48. Accounts App & URLs
+create new app accounts
+
+templates
+	accounts
+		login.html
+		register.html
+		dashboard.html
+
+add in settings.py
+include accounts
+accounts
+	urls.py
+	login view.login name login
+	register register register
+	logout logout logout
+	dashboard dashboard dashboard
+
+views.py
+	def register
+
+
+	def login
+
+
+	def logout
+		return redirect(‘index’)
+
+
+	def dashboard
+
+
+{ url ‘register’ for index register
+url ‘login’	for index login
+if ‘login’ in request.path
+	class nav item active mr-3
+else
+	nav item mr-3
+endif           -------------------------         same for register
+	
+49. Register and login templates
+Go to resource and paste register.html
+
+extends base
+same with login.html
+
+register.html action url ‘register’           and          method ‘POST’   same with login add {% csrf_token %}
+
+accounts views.py
+def register
+	if request.method == ‘POST’:
+		print(‘submitted reg’)
+		return redirect(‘index’)
+	show form
+
+	if req.me == ‘POST’:
+		#reg user
+		return
+	return ren reg.html
+
+def login
+	if req.meth == ‘POST’:
+		#Login user
+		return
+	ret ren log.html
+		
+
+50. Message Alerts
+Settings.py
+# Messages
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+}
+
+templates partials
+	_alerts.html
+	if messages
+		for message in messages
+			div#message.cntainer
+				div.alert.alert-{{ message.tags }}.alert-dissmissible.text-center role=”alert”>
+					button type”button class close data-dismiss alert><span aria-hidden=”tru”>&times;</span></button>
+					strong
+						{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+							Error:
+						{% else %}
+							{{ message.tags|title }}
+						{% endif %}
+					</strong>
+					{{ message }}
+				</div>
+			</div>
+		endfor
+	endif
+
+
+from django.contrib import messages
+
+def register
+	if request
+		messages.error(request, ‘Testing error message’)
+		return redirect(‘retister’)
+
+register.html
+	card_body
+	include partials/_alerts.html
+
+login.html
+	card_body
+	includes partials/_alerts.html
+
+main.js
+setTimeout(function() {
+	$(‘#message’).fadeOut(‘slow’);
+}, 3000);
+
+51. User Registration
+If 
+first_name = request.POST[‘first_name’]
+last_name
+username
+email
+password
+password2
+
+if password == password2:
+	if User.object.filter(username=username).exists():
+		mess.e(re, ‘The username is already taken’)
+		re red(‘register’)
+	if User.objects.filter(email.=email).exists():
+		mess.e(re, ‘The email is already taken’)
+		re red(‘register’)
+	#looks good
+	user = User.objects.create_user(u=u, f=f, las=las, emai=email, pas=pas
+	\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	login agter registration
+	auth.login(request, user)
+	messages.succes(request, ‘You are now logged in’)
+	return red(‘index’)
+	\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+	user.save()
+	me.su(requst, ‘Your are now registered’)
+	retunr redirect login
+	return
+messaage.error(request, ‘Password doesn’t match’)
+return redirect(‘register’)
+return render register.html
+
+index.html
+	add under above listings comment {% include ‘partials/_alerts.html’ %} add br under secton
+	
+52. User Login
+Def login
+	if 
+		username = 
+		password = request.POST[‘password’]
+		suer = auth.authenticate(suer=user, pass=pass)
+		if suer is not None:
+			auth.login(request, user)
+			message.suc(req, ‘You aree now loggedi n’)
+			re re(dashboard
+		else:
+			message.err(re, ‘invalid credentials
+			re re(‘login’)
+
+53. Logout & Navbar Auth Links
+Take dashboard.html from resource
+
+dashboard bred home href index
+
+under nav ml-auto
+	{% if user.is_authenticated %}
+		hello
+		whole register li paste
+		if dashboard
+			Welocome {{ suer.username }} - Dashboard 
+		url dashboard get rid or i
+		li class nav-ime mr-3
+			a href”javascript:{document.getElementById(‘logout’).submit()}”
+calss=”nav-link’>i class fas fs-sign-out-alt’></i> Logout </a.
+			Form action url logout method post id logout>
+			{% csrf_tooken 5}
+				input ype = hidden
+			ofrn
+	
+	else
+		register	
+		login
+	endif
+
+
+
+def logout 
+	if rem.me = pst
+		auth.logout(reqaest)
+		mes.suc(re, ‘your are nao logout 
+		retu redi(idndex
+
+dash.htm ladd below bred in pa_alerts
+
+54. Dynamic Page Titles
+Base.html
+	title BT Real Estate {% bock title %}{% 3ndblock %}
+
+index.html
+	below huma
+		{% bock title %} | Welcome{% endbock
+about 
+		About Us
+listings
+		Browse Property Listings
+search.html
+		Search Results
+lilsting.html
+		| {{ listing.title }}
+login Account Login, register Resgister Account , dAshbo  user dashboard
+
+
+55. Contacts App & Model
+Create app contacts
+add in settings
+models.py
+class Contact(models.Model):
+	listing = models.Charfield(max_length=200)
+	listing_id if
+	name char ml 200
+	email ml 100
+	phone char ml 100
+	message tf bla tru
+	contact_date dtimef(default=datetime.now, blank=True)
+	user_id = models.IF(blank=True)
+	def __str__(self):
+		return self.name
+
+makemigrations
+migrate
+
+56. Contacts Admin Customization
+Admin.py
+import Contact
+class ContactAdmin(admin.modeladmin):
+	list_display id name listing email contact_date
+	lisdislink id name
+	search_fields name email listings
+	lisperpage 25
+
+admin.site.register(Contact, ContactAdmin):
+
+	
+57. Contact Form Prep
+Listing.html
+	form action url contact post 
+	csrf_token
+	if user authenticated
+		input hidden nameuser_id value user.id
+	else
+		input hi user value 0
+	endif
+	above form group
+	input type hidden name realtor_email value listing.realtor.email
+				listing_id                  listing.id
+	
+	value {{ lisitn.title of input
+
+	in name input if user auth value=user.firstname lastname same with email
+
+contacts urls.py
+	path(‘contact’, views.contact, name contact
+
+mail urls.py
+	contacts contacs.url
+
+contacts views.py
+def contact(request)
+	return
+
+
+58. Contact Form Submission
+
+
+
+Views.py
+	
+def contact
+	if request.method == ‘post’
+		listing_id = request.POST[‘listing_id’]
+		listing
+		name
+		email
+		phone
+		message
+		user_id
+		realtor_email
+
+		contact = Contact(listing=listing, ............
+
+		contact.save
+
+		message.success(request, ‘Your request has been submitted, a realtor will get back to you soon
+		return redirect(‘/listings/’+listing_id)
+
+remove diabled in listing
+
+59. Inquiry Check & Send Email
+					
+ 
+def contact unde realtor email
+
+# check if user has made inquery
+if request.user.is_authenticated:
+	user_id = request.user.id
+	has_contacted = Contact.objects.all().filter(listing_id=listing_id, user_id=user_id)
+	if has_contactid:
+		message(You have already made an inuquitry for this listing
+	
+		redirect listing/+listing_id
+
+
+
+main settings
+
+# Email Configuration
+EMAIL_HOST = ‘smtp.gamil.com’            - ------------------------------      skip email portion
+EMAIL_PORT = 587
+EMAIL_HOST_USER = ‘’
+EMAIL_HOST_PASSWORD = ‘’
+EMAIL_USE_TLS = True
+
+
+
+
+vies.py dahsboard
+	user_contacts = Contacts.objects.order_by(‘-contact_date).filter(user_id=request.user.id)
+	CONTEXT 	CONTACTA USER CONTACT
+	retur nrender 9requst, ‘accounts/dashboasrd.html’l......
+
+dashboard .html
+	display 4 User Dashboard
+	lead Mange uour BT Real Estate Contact
+
+	about to Dashboard
+	Welcome {{ user.firsst_name }}
+
+	keep first table
+	
+	if under welcome 
+	if contacts
+	
+
+
+	{% else %}
+		you have not made any enquery
+	{% endif %}
+
+	above tr {% for contact in contacts %}
+		contact.id
+		contact.listings
+		href url ‘listing contact.listing_id
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+	
+	
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+	
