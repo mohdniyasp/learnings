@@ -1,2 +1,2 @@
 # learnings
-here goes all the learning md's
+here goes all the learning doc's
