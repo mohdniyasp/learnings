@@ -1,0 +1,1685 @@
+Module 1: Introduction to Databases
+At this point in the course, you know: 
+    • Structured Query Language, or SQL, is used for querying and managing data.  
+    • SQL is useful for handling structured data or data incorporating relations among entities and variables. 
+    • The SQL SELECT statement retrieves data from a relational database table.  
+    • The SELECT statement is a query, and the output we get from executing this query is a Result Set or a Result Table. 
+    • In its simplest form, the syntax for a SELECT statement is:  
+SELECT * from TableName 
+    • The SQL INSERT statement inserts data into a relational database table by adding rows. 
+    • The syntax of the INSERT statement is:
+INSERT INTO TableName ColumnName VALUES (values) 
+    • For the INSERT statement, the values provided in the Values clause must equal the number of column names specified in the Column Name list. This ensures that each column has a value.  
+    • The SQL UPDATE statement is used to read and modify data. 
+    • The syntax of the UPDATE statement is as follows: 
+UPDATE [TableName] SET [[ColumnName]=[Value]] <WHERE [Condition]> 
+    • The SQL DELETE statement is used to remove data from a table. 
+    • The syntax of the DELETE statement is:
+DELETE FROM [TableName] <Where [Condition]> 
+    • The WHERE clause specifies the rows in a table that will be acted on by a SQL statement such as SELECT, DELETE, or UPDATE. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TABLE
+Package/Method 
+Description 
+Code Example 
+
+SELECT 
+Retrieves data from one or more tables based on specified columns. 
+SELECT column1, column2 FROM table_name; 
+ 
+FROM 
+Specifies the table from which data is retrieved. 
+SELECT column1, column2 FROM table_name; 
+ 
+WHERE 
+Filters data based on specified conditions. 
+SELECT column1, column2 FROM table_name WHERE condition; 
+ 
+ORDER BY 
+Sorts the result set based on specified columns in ascending or descending order. 
+SELECT column1, column2 FROM table_name ORDER BY column1 ASC; 
+ 
+GROUP BY 
+Groups rows based on a specified column. 
+SELECT column1, COUNT(*) FROM table_name GROUP BY column1; 
+ 
+HAVING 
+Filters grouped data based on specified conditions. 
+SELECT column1, COUNT(*) FROM table_name GROUP BY column1 HAVING COUNT(*) > 1; 
+ 
+INSERT INTO 
+Inserts data into a table. 
+INSERT INTO table_name (column1, column2) VALUES (value1, value2); 
+ 
+UPDATE 
+Modifies data in a table based on specified conditions. 
+UPDATE table_name SET column1 = value1 WHERE condition; 
+ 
+DELETE FROM 
+Deletes data from a table based on specified conditions. 
+DELETE FROM table_name WHERE condition; 
+ 
+JOIN 
+Combines rows from multiple tables based on related columns. 
+SELECT column1, column2 FROM table1 JOIN table2 ON table1.column = table2.column; 
+INNER JOIN 
+Returns only matching rows from both tables. 
+SELECT column1, column2 FROM table1 INNER JOIN table2 ON table1.column = table2.column; 
+ 
+LEFT JOIN 
+Returns all rows from the left table and matching rows from the right table. 
+SELECT column1, column2 FROM table1 LEFT JOIN table2 ON table1.column = table2.column; 
+ 
+RIGHT JOIN 
+Returns all rows from the right table and matching rows from the left table. 
+SELECT column1, column2 FROM table1 RIGHT JOIN table2 ON table1.column = table2.column; 
+ 
+FULL JOIN 
+Returns all rows from both tables, regardless of the match. 
+SELECT column1, column2 FROM table1 FULL JOIN table2 ON table1.column = table2.column; 
+ 
+DISTINCT 
+Returns unique values from a column. 
+SELECT DISTINCT column1 FROM table_name; 
+ 
+COUNT 
+Counts the number of rows or non-null values in a column. 
+SELECT COUNT(*) FROM table_name; or SELECT COUNT(column1) FROM table_name; 
+ 
+SUM 
+Calculates the sum of values in a column. 
+SELECT SUM(column1) FROM table_name; 
+ 
+AVG 
+Calculates the average value of a column. 
+SELECT AVG(column1) FROM table_name; 
+ 
+MAX 
+Finds the maximum value in a column. 
+SELECT MAX(column1) FROM table_name; 
+ 
+MIN 
+Finds the minimum value in a column.  
+SELECT MIN(column1) FROM table_name; 
+
+Module 2 ORM: Bridging the Gap Between the Real World and Relational Model
+
+ At this point in the course, you know: 
+    • The Object-Oriented Programming (OOP) and SQL paradigm model data differently. 
+    • Object Relational Mapping, or ORM bridges the gap between OOP and SQL. 
+    • ORM libraries or tools can map and transfer data stored in a relational database as rows into objects or objects into rows.  
+    • ORM allows developers to use OOP to query and manipulate data because it transfers objects into rows and rows into objects. 
+    • Django ORM is a Python ORM component that belongs to the Django web application framework. 
+    • Django ORM can help speed up database development because you define maps to a database table for each Django model. 
+    • Each Django field maps to a column type. 
+    • Django automatically creates tables once models and fields are defined. 
+    • Django APIs can perform Create, Read, Update, and Delete (CRUD) operations on database objects. 
+    • In a Django model, you create an object and call the model’s save method to insert it into the database as a record. 
+    • You must construct a QuerySet using a Manager on your model class to read objects using Django Model API. 
+    • There are several ways to update database records in Django by updating objects. 
+    • To delete records in a database, you call Django ORM’s Delete method on a model object or query set. 
+
+
+Package/Method 
+Description 
+Code Example 
+
+django.db.models.Model 
+Define a model. 
+from django.db import models
+class MyModel(models.Model): 
+    field1 = models.CharField(max_length=100) 
+    field2 = models.IntegerField() 
+ 
+makemigrations/migrate 
+Create database tables based on models. 
+python manage.py makemigrations 
+python manage.py migrate 
+ 
+all() 
+Retrieves all instances of the ‘MyModel’ model from the database. 
+MyModel.objects.all() 
+ 
+filter() 
+Filter objects using conditions. 
+MyModel.objects.filter(field1="value") 
+MyModel.objects.filter(field2__gt=5) 
+ 
+get()
+Retrieves a single instance of the ‘MyModel’ model from the database where the value of ‘field1’ is "value". 
+MyModel.objects.get(field1="value") 
+ 
+obj = MyModel(field1="value", field2=5) , obj.save() 
+Creates a new instance of the ‘MyModel’ model with the values "value" for ‘field1’ and 5 for ‘field2’, and then saves the instance to the database. 
+obj = MyModel(field1="value", field2=5) 
+obj.save() 
+ 
+obj.field1 = "new value" 
+obj.save() 
+ 
+Updates the value of ‘field1’ for the ‘obj’ instance to "new value" and saves the changes to the database. 
+ 
+obj.field1 = "new value" 
+obj.save() 
+ 
+delete() 
+ 
+Deletes an object. 
+obj.delete() 
+ 
+obj.related_model 
+ 
+Retrieves the related model associated with the ‘obj’ instance. Access related objects (Foreign Key or OneToOneField) 
+ 
+obj.related_model 
+ 
+obj.model_set.all() 
+ 
+Fetches all related objects associated with the ‘obj’ instance. Access related objects in reverse (ForeignKey) 
+ 
+obj.model_set.all() 
+ 
+field 
+Performs a filtering operation on the ‘MyModel’ model instances based on a related model's field value. 
+ 
+MyModel.objects.filter(related_model__field="value") 
+ 
+exact 
+Retrieves instances of the ‘MyModel’ model from the database where the value of the ‘field’ attribute is exactly equal to "value". 
+ 
+MyModel.objects.filter(field__exact="value") 
+ 
+iexact 
+The iexact lookup is case-insensitive, meaning it will match values regardless of whether they are uppercase or lowercase and provide a case-insensitive match. 
+ 
+MyModel.objects.filter(field__iexact="value") 
+ 
+contains 
+Checks if the value is a substring within the field. 
+ 
+MyModel.objects.filter(field__contains="value") 
+ 
+startswith 
+ 
+Determines whether a string begins with the characters of a specified string. 
+MyModel.objects.filter(field__startswith="value") 
+ 
+endswith 
+ 
+Determines whether a string ends with the specified suffix. 
+MyModel.objects.filter(field__endswith="value") 
+ 
+in 
+Checks if the value of the field is present in the given list of values. 
+ 
+MyModel.objects.filter(field__in=["value1", "value2"]) 
+ 
+gt 
+Checks if the value of ‘field’ is numerically greater than 5. 
+ 
+MyModel.objects.filter(field__gt=5) 
+ 
+lt 
+Checks if the value of ‘field’ is numerically less than 10. 
+ 
+MyModel.objects.filter(field__lt=10)
+
+Module 3: Full-stack Django Development
+
+At this point in the course, you know: 
+    • The Model-View-Controller design pattern divides application logic into three components:
+            ▪ Model accesses and manipulates data.
+            ▪ View presents data in various forms.
+            ▪ Controller coordinates between Model and View. 
+    • The Django Model-View-Template pattern is like MVC, except there is no Controller, and the Django server performs the controller function. 
+    • In Django, a View is a Python function that takes a Web request and applies the necessary logic to generate a Web response. 
+    • Django uses a template containing static HTML elements and special Python code to generate dynamic Web pages.  
+    • When you create a Django project, Django creates some core files.
+            ▪ manage.py is a command-line interface used to interact with the Django project.
+            ▪ settings.py contains the settings and configurations for your Django project.
+            ▪ urls.py contains the URL and routing definitions of your Django app. 
+    • You start building a Django admin site by creating an admin user. 
+    • You can then log in as a superuser and register your models to the admin site so you can manage them. 
+    • You can customize the admin form and add search and filters. 
+    • A Django View takes a Web request such as HTTP GET, POST, DELETE, or UPDATE and returns a Web response. The web response can be a string, JSON/XML file, HTML page, or an error status indicating client or server-side errors. 
+    • You create templates in Django to specify how your data will be presented. A Django template combines static HTML elements with Django template tags and variables to describe how the dynamic parts will be inserted. These work together to generate an HTML page rendered in a user’s web browser.
+
+
+Package/Method 
+Description 
+Code Example 
+count() 
+Counts the number of objects. 
+ 
+MyModel.objects.count() 
+ 
+Sum() 
+Provides the sum of a field. 
+ 
+MyModel.objects.aggregate(Sum('field')) 
+ 
+Avg() 
+Calculates the average of a field. 
+ 
+MyModel.objects.aggregate(Avg('field')) 
+ 
+Max() 
+Provides the maximum value of a field. 
+ 
+MyModel.objects.aggregate(Max('field')) 
+ 
+Min() 
+Provides the minimum value of a field. 
+ 
+MyModel.objects.aggregate(Min('field')) 
+ 
+order_by() 
+Orders objects based on a field. 
+ 
+MyModel.objects.order_by('field') 
+ 
+order_by(-) 
+Order objects based on fields in descending order. 
+ 
+MyModel.objects.order_by('-field') 
+ 
+select_related 
+Performs inner join. 
+ 
+MyModel.objects.select_related('related_model') 
+ 
+prefetch_related 
+Performs left Outer join. 
+ 
+MyModel.objects.prefetch_related('related_model') 
+ 
+many_to_many 
+Performs many-to-many join. 
+ 
+obj.many_to_many_field.all() 
+filter(ForeignKey) 
+ 
+Performs conditional joins. 
+ 
+MyModel.objects.filter(related_model__isnull=True)
+
+
+Module 4: Consolidate and Deploy Your Django App
+
+Concepts covered in the lab
+    • Authentication: The process of verifying the identity of a user or system.
+      
+    • User: Represents an individual who interacts with the Django application. It typically includes information such as username, password, and email.
+      
+    • Registration: The process of creating a new user account in the application.
+      
+    • Login: The process by which a user provides credentials (such as username and password) to access a protected area of the application.
+      
+    • Logout: The process of ending a user’s session and removing their authentication status.
+
+
+Next, let’s try to retrieve the superuser and show its profile on onlinecourse/course_list.html template
+
+Open onlinecourse/templates/onlinecourse/course_list.html, add the following code snippet under comment <!--Authentication section-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'onlinecourse/course.css' %}">
+    <meta charset="UTF-8">
+    <title>Online Courses</title>
+</head>
+<body>
+<!--Authentication section-→
+{% if user.is_authenticated %}
+<p>Username: {{user.username}}, First name: {{user.first_name}}, Last name: {{user.last_name}} </p>
+{% endif %}
+
+
+<h2>Popular courses list</h2>
+<hr>
+{% if course_list %}
+    <ul>
+    {% for course in course_list %}
+        <div class="container">
+          <div class="row">
+              <div class="column-33">
+                <img src="{{MEDIA_URL}}/{{ course.image }}" width="360" height="360" >
+            </div>
+            <div class="column-66">
+                <h1 class="xlarge-font"><b>{{ course.name }}</b></h1>
+                <p style="color:MediumSeaGreen;"><b>{{course.total_enrollment}} enrolled</b></p>
+                <p> {{ course.description }}</p>
+                <form action="{% url 'onlinecourse:enroll' course.id %}" method="post">
+                    {% csrf_token %}
+                <input class="button"  type="submit"  value="Enroll">
+              </form>
+            </div>
+          </div>
+        </div>
+        <hr>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No courses are available.</p>
+{% endif %}
+</body>
+</html>
+
+Next, let’s try to logout the superuser manually from main page by adding a logout dropdown button.
+
+Open onlinecourse/course_list.html, update the code between {% if user.is_authenticated %} and {% endif %} with a
+dropdown <div>:
+
+{% if user.is_authenticated %}
+<div class="rightalign">
+       <div class="dropdown">
+           <button class="dropbtn">{{user.first_name}}</button>
+           <div class="dropdown-content">
+                <a href="{% url 'onlinecourse:logout' %}">Logout</a>
+           </div>
+       </div>
+</div>
+{% endif %}
+
+Next, let’s create the logout_request view.
+
+Open onlinecourse/views.py, add a function-based logout view under the comment # Create authentication related views:
+def logout_request(request):
+    # Get the user object based on session id in request
+    print("Log out the user `{}`".format(request.user.username))
+    # Logout user in the request
+    logout(request)
+    # Redirect user back to course list view
+    return redirect('onlinecourse:popular_course_list')
+
+The above code snippet calls a built-in logout method with the request as an argument to log out the user (obtained from the request).
+
+Configure a route for logout_request view by adding a path entry in urlpatterns:
+
+path('logout/', views.logout_request, name='logout'),
+
+You can now test the logout functionality by refreshing the course list page. After you click logout button from the drop down, you should see the dropdown button disappeared because the user was not authenticated anymore.
+
+Next, let’s try to log in the superuser again.
+
+Open templates/onlinecourse/course_list.html, update the {% if user.is_authenticated %} block
+
+{% if user.is_authenticated %}
+    <div class="rightalign">
+        <div class="dropdown">
+            <button class="dropbtn">{{user.first_name}}</button>
+            <div class="dropdown-content">
+                <a href="{% url 'onlinecourse:logout' %}">Logout</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="rightalign">
+        <div class="dropdown">
+            <button class="dropbtn">Visitor</button>
+            <div class="dropdown-content">
+                <a href="{% url 'onlinecourse:login' %}">Login</a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+Here, we added a {% else %} tag to handle the scenario when user is not authenticated and also created a new dropdown button with a link pointing to a login view.
+
+The login view should return a common login page asking for user credential such as username and password.
+
+Next, let’s create a template for such login view:
+
+Open the templates/onlinecourse/user_login.html, and add a simple form to accept user name and password
+
+<form action="{% url 'onlinecourse:login' %}"  method="post">
+  {% csrf_token %}
+  <div class="container">
+    <h1>Login</h1>
+    <label for="username"><b>User Name</b></label>
+    <input type="text" placeholder="Enter User Name: " name="username" required>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password: " name="psw" required>
+    <div>
+      <button class="button" type="submit">Login</button>
+    </div>
+  </div>
+</form>
+
+The key elements of this login form are two input fields for user name and password. After form submission, it sends a POST request to a login view.
+
+Next, let’s create a login view to handle login request.
+
+Open onlinecourse/views.py, add a login_request view:
+
+def login_request(request):
+    context = {}
+    # Handles POST request
+    if request.method == "POST":
+        # Get username and password from request.POST dictionary
+        username = request.POST['username']
+        password = request.POST['psw']
+        # Try to check if provide credential can be authenticated
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            # If user is valid, call login method to login current user
+            login(request, user)
+            return redirect('onlinecourse:popular_course_list')
+        else:
+            # If not, return to login page again
+            return render(request, 'onlinecourse/user_login.html', context)
+    else:
+        return render(request, 'onlinecourse/user_login.html', context)
+
+and configure a route for the login_request view by adding a path entry in urlpatterns list in onlinecourse/urls.py:
+
+path('login/', views.login_request, name='login'),
+
+Now we can test the login function by refreshing the course list page:
+You could try both login and logout with the created superuser.
+
+In the previous step, we used the CLI to create a superuser. For regular users,we will need to create a user registration template and view to receive and save user credentials.
+
+At the model level, a user object will be created in the auth_user table to complete the user registration. After the user is created, we can log in the user and redirect the user to the course list page.
+
+Open onlinecourse/templates/onlinecourse/course_list.html, update the authentication section by adding a link <a href="{% url 'onlinecourse:registration' %}">Signup</a> pointing to a registration view to be created.
+
+{% if user.is_authenticated %}
+    <div class="rightalign">
+        <div class="dropdown">
+            <button class="dropbtn">{{user.first_name}}</button>
+            <div class="dropdown-content">
+                <a href="{% url 'onlinecourse:logout' %}">Logout</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="rightalign">
+        <div class="dropdown">
+            <form action="{% url 'onlinecourse:registration' %}" method="get">
+                <input class="dropbtn"  type="submit" value="Visitor">
+                <div class="dropdown-content">
+                    <a href="{% url 'onlinecourse:registration' %}">Signup</a>
+                    <a href="{% url 'onlinecourse:login' %}">Login</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endif %}
+
+Complete the following code snippet to create a registration_request view to handle a registration POST request:
+
+def registration_request(request):
+    context = {}
+    # If it is a GET request, just render the registration page
+    if request.method == 'GET':
+        return render(request, 'onlinecourse/user_registration.html', context)
+    # If it is a POST request
+    elif request.method == 'POST':
+        # Get user information from request.POST
+        username = request.POST['username']
+        password = request.POST['psw']
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
+        user_exist = False
+        try:
+            # Check if user already exists
+            User.objects.get(username=username)
+            user_exist = True
+        except:
+            # If not, simply log this is a new user
+            logger.debug("{} is new user".format(username))
+        # If it is a new user
+        if not user_exist:
+            # Create user in auth_user table
+            user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name,
+                                            password=password)
+            # Login the user and redirect to course list page
+            login(request, user)
+            return redirect("onlinecourse:popular_course_list")
+        else:
+            return render(request, 'onlinecourse/user_registration.html', context)
+
+Complete the following code snippet to create a registration template to accept user information:
+
+<form action="{% url 'onlinecourse:registration' %}" method="post">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <hr>
+    <label for="username"><b>User Name</b></label>
+    <input type="text" placeholder="Enter User Name: " name="username" required>
+    <label for="firstname"><b>First Name</b></label>
+    <input type="text" placeholder="Enter First Name: " name="firstname" required>
+    <label for="lastname"><b>Last Name</b></label>
+    <input type="text" placeholder="Enter Last Name: " name="lastname" required>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password: " name="psw" required>
+    <div>
+        {% csrf_token %}
+        <button class="button" type="submit">Sign Up</button>
+    </div>
+  </div>
+</form>
+
+Add a route for the registration_request view by adding a path entry in urlpatterns list in urls.py:
+
+path('registration/', views.registration_request, name='registration'),
+
+
+Now refreshing the main page and try new registration function along with login/logout.
+
+
+
+Concepts covered in the lab
+    • Bootstrap: A popular open-source framework that provides a set of CSS and JavaScript components for building responsive and mobile-first web applications.
+      
+    • Template: A Django-specific file that defines the structure and presentation of a web page. It typically contains a mixture of HTML, CSS, and Django template language code.
+      
+    • Django template language: A specialized template language provided by Django that allows dynamic content rendering, looping, conditional statements, and more.
+      
+    • Bootstrap Components: Pre-designed UI elements provided by Bootstrap, such as buttons, forms, navigation bars, and modals, that can be easily integrated into web pages.
+      
+    • Bootstrap Grid System: A responsive layout system provided by Bootstrap that divides the page into a grid of rows and columns, allowing for easy alignment and arrangement of content.
+
+Adding a minimal Bootstrap CSS file to a Django template is actually very easy.
+
+Open onlinecourse/templates/onlinecourse/course_list.html, link a Bootstrap CSS file bootstrap.min.css to <head>...</head> element
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Online Courses</title>
+</head>
+
+Here we used maxcdn CDN (Content Distribution Network) for delivering bootstrap.min.css file to our templates. In addition to maxcdn, there are many other popular CDNs you may use such as StackPath.
+
+Repeat the above steps to update the <head> of all template files in onlinecourse/templates/onlinecourse folder.
+
+
+Here we used maxcdn CDN (Content Distribution Network) for delivering bootstrap.min.css file to our templates. In addition to maxcdn, there are many other popular CDNs you may use such as StackPath.
+
+Repeat the above steps to update the <head> of all template files in onlinecourse/templates/onlinecourse folder.
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="navbar-header">
+              <a class="navbar-brand" href="#">Online Course</a>
+        </div>
+    </div>
+</nav>
+
+The content <div> of the navigation bar <nav> uses a .container-fluid Bootstrap CSS class to make sure the bar content takes the full width of the page.
+
+Then we added a <div> with .navbar-header class to define header with a simple link styled with .navbar-brand to highlight the app name.
+
+Refresh the main course list page and you should see a light theme navigation bar with a header called Online Course.
+
+Next, let's move the user sign-in and sign-up area to the navigation bar.
+
+Remove the existing <ul> list of user authentication related elements such as user name and password input fields.
+
+Under <div class="navbar-header">, add a new list styled with classes nav navbar-nav navbar-right to create a navigation bar item and be aligned to the right.
+
+<ul class="nav navbar-nav navbar-right">
+    {% if user.is_authenticated %}
+    <li>
+         <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
+         <a class="btn btn-link" href="{% url 'onlinecourse:logout' %}">Logout</a>
+    </li>
+    {% else %}
+    <li>
+         <form class="form-inline" action="{% url 'onlinecourse:login' %}" method="post">
+            {% csrf_token %}
+            <div class="input-group">
+                 <input type="text" class="form-control" placeholder="Username" name="username" >
+                 <input type="password" class="form-control" placeholder="Password" name="psw" >
+                 <button class="btn btn-primary" type="submit">Login</button>
+                 <a class="btn btn-link" href="{% url 'onlinecourse:registration' %}">Sign Up</a>
+            </div>
+         </form>
+    </li>
+    {% endif %}
+</ul>
+
+The completed <nav> HTML element should look like the following code snippet:
+
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Online Course</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+            <li>
+                <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
+                <a class="btn btn-link" href="{% url 'onlinecourse:logout' %}">Logout</a>
+            </li>
+            {% else %}
+            <li>
+                <form class="form-inline" action="{% url 'onlinecourse:login' %}" method="post">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Username" name="username" >
+                        <input type="password" class="form-control" placeholder="Password" name="psw" >
+                        <button class="btn btn-primary" type="submit">Login</button>
+                        <a class="btn btn-link" href="{% url 'onlinecourse:registration' %}">Sign Up</a>
+                    </div>
+                </form>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+Refresh the page and you should see a nice navigation bar with user login and registration elements integrated.
+
+
+Copy/paste the navigation bar your created in the previous step to course_detail.html, user_login.html, user_registration.html.
+
+For all templates other than the course list template, change the navigation bar header link pointing to Online Course, i.e., page generated by popular_course_list
+
+ <a class="navbar-brand" href="{% url 'onlinecourse:popular_course_list' %}">Online Course</a>
+
+Next, let's stylize the login and registration pages.
+
+Open the onlinecourse/templates/onlinecourse/user_login.html, find the root <div> with comment <!--Style root div with .container class --> and stylize it:
+
+<div class="container">
+
+Bootstrap .container class adds some paddings to the <div>.
+
+Find the second level <div> element with comment <!--Style second div with .form-group class --> and stylize it:
+<div class="form-group">
+
+Bootstrap .form-group class builds the structure for a form.
+
+Find two <input> elements with comment <!--Style input with .form-control class --> and stylize it with:
+
+<input ... class = "form-control" ...>
+
+Bootstrap .form-control class stylizes the elements in a form.
+
+Find a <div> with comment <!--Style the message paragraph with .alert and .alert-warning class -->. This <div> is designed to show warning messages such as user already exists or user password is not correct. Stylize it with:
+
+<div class="alert alert-warning">
+
+Find the submit <button> with comment <!--Style button with .btn and .btn-primary class -->. Stylize it with
+
+<button class="btn btn-primary" ... >
+
+Once you have stylized above elements, the login form should look like the following:
+
+<form action="{% url 'onlinecourse:login' %}" method="post">
+  {% csrf_token %}
+  <div class="container"> <!--Style root div with .container class -->
+    <h1>Login</h1>
+    <div class="form-group"> <!--Style second div with .form-group class -->
+      <label for="username"><b>User Name</b></label>
+      <input id="username" class = "form-control" type="text" placeholder="Enter User Name: " name="username" required> <!--Style input with .form-control class -->
+      <label for="psw"><b>Password</b></label>
+      <input id="psw" class = "form-control" type="password"  placeholder="Enter Password: " name="psw" required> <!--Style input with .form-control class -->
+    </div>
+    {% if message %}
+      <div class="alert alert-warning"> <!--Style the message paragraph with .alert and .alert-warning class -->
+        {{ message }}
+      </div>
+    {% endif %}
+    <button class="btn btn-primary" type="submit">Login</button> <!--Style button with .btn and .btn-primary class -->
+  </div>
+</form>
+
+Next, let's go to https://userid-8000.theiadocker-1.proxy.cognitiveclass.ai/onlinecourse/login and check the result:
+and your login page should look like the following:
+
+Stylize the user_registration.html by following the examples in user_login.html page
+and the comments in the template.
+
+<form action="{% url 'onlinecourse:registration' %}" method="post">
+  <div class="container"> <!--Style root div with .container class -->
+    {% csrf_token %}
+    <h1>Sign Up</h1>
+    <hr>
+    <div class="form-group"> <!--Style second div with .form-group class -->
+        <label for="username"><b>User Name</b></label>
+        <input type="text" class="form-control" placeholder="Enter User Name: " name="username" required> <!--Style input with .form-control class -->
+        <label for="firstname"><b>First Name</b></label>
+        <input type="text" class="form-control" placeholder="Enter First Name: " name="firstname" required> <!--Style input with .form-control class -->
+        <label for="lastname"><b>Last Name</b></label>
+        <input type="text" class="form-control" placeholder="Enter Last Name: " name="lastname" required> <!--Style input with .form-control class -->
+        <label for="psw"><b>Password</b></label>
+        <input type="password" class="form-control" placeholder="Enter Password: " name="psw" required> <!--Style input with .form-control class -->
+        {% if message %}
+        <div class="alert alert-warning"> <!--Style the message paragraph with .alert and .alert-warning class -->
+            {{ message }}
+        </div>
+        {% endif %}
+        <button class="btn btn-primary" type="submit">Sign up</button> <!--Style button with .btn and .btn-primary class -->
+    </div>
+  </div>
+</form>
+
+Next, let's stylize the main content of course list page.
+
+For the course list, we want to organize each course as a card with an image, title, and description and put them onto a card deck.
+
+Open onlinecourse/templates/onlinecourse/course_list.html, find the content root level <div> with comment <!--Style root div with .container class -->
+and stylize it with:
+
+<div class="container">
+
+Find the second level card deck <div> with comment <!--Style second div with .card-deck class --> and stylize it with:
+
+<div class="card-deck">
+
+Find the third level card <div> with comment <!--Style third level div with .card class --> and stylize it with:
+
+<div class="card" ... >
+
+Find card image <image> with comment <!--Style card image with .card-img-left class --> and stylize it with:
+
+<img class="card-img-left" ... >
+
+Find the card body <div> class with comment <!--Style root div with .card-body and .bg-light class --> and stylize it with:
+
+<div class="card-body bg-light">
+
+Find the card title <h5> and <span> with comment <!--Style h5 with .card-title and span with .text-success class --> and stylize them with:
+
+<h5 class="card-title"> ... <span class="text-success"> ..
+
+Find the card text <p> with comment <!--Style card description with .card-text class --> and stylize it with:
+
+<p class="card-text">
+
+Find the enrollment submission button <input> with comment <!--Style Enroll button with .btn and .btn-primary class --> and stylize it with:
+
+<input class="btn btn-primary" >
+
+Now your course list is stylized into a course card deck
+
+{% if course_list %}
+    <div class="container"> <!--Style root div with .container class -->
+        <div class="card-deck"> <!--Style second div with .card-deck class -->
+            {% for course in course_list %}
+            <div class="card" style="width: 36rem;"> <!--Style third level div with .card class -->
+                <img class="card-img-left" src="{{MEDIA_URL}}/{{ course.image }}" width="240px" height="240px"
+                           alt="Course image"> <!--Style card image with .card-img-left class -->
+                <div class="card-body bg-light"> <!--Style root div with .card-body and .bg-light class -->
+                    <h5 class="card-title">{{ course.name }}, <span class="text-success"> <!--Style h5 with .card-title and span with .text-success class -->
+                              {{ course.total_enrollment}} enrolled</span></h5>
+                    <p class="card-text">{{ course.description}}</p> <!--Style card description with .card-text class -->
+                    <form action="{% url 'onlinecourse:enroll' course.id %}" method="post">
+                        {% csrf_token %}
+                        <input class="btn btn-primary" type="submit"
+                               value="Enroll"> <!--Style Enroll button with .btn and .btn-primary class -->
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% else %}
+    <p>No courses are available.</p>
+{% endif %}
+
+Let's open https://userid-8000.theiadocker-1.proxy.cognitiveclass.ai/onlinecourse and check the fully stylized course card deck page:
+
+stylize onlinecourse/templates/onlinecourse/course_details.html by making
+each lesson as a card and the lesson list as a vertical card column.
+Click here to see solution
+
+<div class="container"> <!--Stylize the root div with .container class -->
+    <h2>{{ course.name }}</h2>
+    <div class="card-columns-vertical"> <!--Stylize the second level card columns div with .card-columns-vertical class-->
+        {% for lesson in course.lesson_set.all %}
+        <div class="card"> <!--Stylize the third level lesson div with .card class-->
+            <div class="card-header">Lesson {{ forloop.counter }}: {{ lesson.title }}</div> <!--Stylize the fourth level lesson header  div with .card-header class-->
+            <div class="card-body">{{lesson.content}}</div>  <!--Stylize the fifth level lesson content div with .card-body class-->
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+The stylized lesson columns should look like the following:
+
+an online course static file structure
+
+onlinecourse/
+	static/
+		onlinecourse/
+			images/background.png
+			course.css
+django users the name space to unuquely refer to static files across multiple apps
+
+
+in addition to this app specific static files, may have to use some external static files 
+STATICFILES_DIRS = [ yourdir1, yourdir2 ]
+
+Collect static files for deployment
+
+STATIC_ROOT = 
+
+collectstatic, and findstatic are the commands 
+to view static files in browser 
+1) course static files 
+STATIC_URL/app_name/name.css
+eg: static/onlinecourse/course.ss
+
+2) external static files
+collectstatic command-line
+STATIC_URL/DIR/DIR/name.css
+At this point in the course, you know:  
+
+    • Both function-based and class-based views are Python functions.  
+      
+    • When you build a class-based view, you define a class subclassing the Django View base class. Then you access some standard methods such as Get or Post. Next, you implement your logic to handle HTTP requests.  
+      
+    • To speed up development and solve common tasks, Django provides some built-in view classes called generic-based views for developers to reuse.  
+      
+    • Authentication is validating users’ identities using credentials such as username and password.  
+      
+    • After users are authenticated, authorization will check the users’ access permissions for resources such as databases.  
+      
+    • In Django, a user model is created to handle authentication and to work with other models, such as groups and permissions, to handle authorization.  
+      
+    • Developers can extend the User model to define application-specific users, such as instructors or learners inherited from the User model.  
+      
+    • Bootstrap, a free web front-end framework, facilitates web app development.  
+      
+    • Bootstrap provides many HTML and CSS templates to simplify Django template development.  
+      
+    • If you want to use Bootstrap CSS style classes without downloading Bootstrap, add a link to the latest Bootstrap version into the head element of your HTML template.  
+      
+    • To add static files to your apps, you first create folders for different static files, such as HTML templates, images, or CSS files.  
+      
+    • Under each folder to hold static files, you create a subfolder using the same app name. This creates name spacing to uniquely refer to static files that use the same name across multiple apps in a Django project.  
+      
+    • Django provides a set of STACFILES_FINDERS for locating the static files in an app. It also provides a static files app to collect all static files in a single directory when an app is deployed.  
+      
+    • To deploy reliable, scalable, and maintainable Django apps, you need to deploy them on web servers.   
+      
+    • Since most web servers are not written in Python, Django apps need extra interfaces to talk to web servers.  
+      
+    • The Web Server Gateway Interface, or WSGI, is the main Python standard for communicating between Web servers and applications.  
+      
+    • The Django app supports the Asynchronous Server Gateway Interface, another web server interface.  
+      
+    • Infrastructure as a Service and Platform as a Service offering allows you to focus on your app development and deploy apps without worrying about the underlying Infrastructure and platform.
+    • Note for deployment: Use postgres, secure credentials,use https, use cdn to static management, loadbalancing, horizondal scaling, monitoring and logging.
+
+To make your Django app production-ready on the cloud.
+Follow the following best practices and Implement various configurations
+to ensure scalability security and reliability,
+use the production database. In production,
+It's recommended to use a robust and scalable database.
+Like PostgreSQL, MySQL, or another suitable,
+relational database. Avoid using SQLite in production
+as it's not designed for high concurrency or heavy traffic. Secure
+database credentials.
+Store your database credentials and other sensitive information and environment variables,
+and never hard code them.
+Use HTTPS for secure communication between the server, your hosted
+Django app, and clients - your users accessing it in the browser. Static and media files.
+Use a cloud storage service or content delivery network,
+or CDN to efficiently serve static files like CSS or JavaScript and
+user-uploaded media files to reduce server load. Load balancing.
+With Django being stateless,
+make the most of it and consider using a load balancer to distribute,
+incoming traffic across multiple instances of your
+Django app ensuring that our performance and high availability.
+Horizontal scaling. Design your app to scale horizontally, adding more
+instances or containers as traffic increases. Monitoring and logging.
+Setup error monitoring and logging services to track and diagnose issues.
+
+
+Package/ Method 
+Description 
+Code Example 
+ListView: 
+Displays a list of objects. 
+class MyListView(ListView): 
+    model = MyModel 
+    template_name = 'my_template.html' 
+    context_object_name = 'object_list'  # default: object_list 
+DetailView 
+Displays details of a single object. 
+class MyDetailView(DetailView): 
+    model = MyModel 
+    template_name = 'my_template.html' 
+    context_object_name = 'object'  # default: object 
+    pk_url_kwarg = 'my_model_id'  # default: pk 
+CreateView 
+Displays a form to create a new object. 
+class MyCreateView(CreateView): 
+    model = MyModel 
+    template_name = 'my_template.html' 
+    fields = '__all__'  # or specify a list of fields 
+UpdateView 
+Displays a form to update an existing object. 
+class MyUpdateView(UpdateView): 
+    model = MyModel 
+    template_name = 'my_template.html' 
+    fields = '__all__'  # or specify a list of fields 
+    pk_url_kwarg = 'my_model_id'  # default: pk 
+DeleteView 
+Displays a confirmation page to delete an object. 
+class MyDeleteView(DeleteView): 
+    model = MyModel 
+    template_name = 'my_template.html' 
+    success_url = '/success-url/' 
+    pk_url_kwarg = 'my_model_id'  # default: pk 
+Basic View Function 
+Function-based view that returns “Hello, World!” 
+ 
+From Django.http import HttpResponse 
+def my_view(request): 
+    # Your view logic here 
+    return HttpResponse("Hello, World!") 
+Render a Template 
+Function-based view to render a template with context. 
+ 
+From django.shortcuts import render 
+def my_template_view(request): 
+    context = {'variable': value} 
+    return render(request, 'my_template.html', context) 
+Redirect to a URL 
+Function-based view to redirect to a specific URL. 
+ 
+From django.shortcuts import redirect 
+def my_redirect_view(request): 
+    return redirect('url_name_or_path') 
+Handle a Form Submission 
+Function-based view to handle form submission. 
+ 
+From django.shortcuts import render 
+def my_form_view(request): 
+    if request.method == 'POST': 
+        # Process the form data here 
+    else: 
+        # Display the form 
+    return render(request, 'my_form_template.html', context) 
+Handle URL Parameters 
+Function-based view that accesses URL parameters. 
+def my_param_view(request, param): 
+    # Access the 'param' value from the URL 
+Protecting Views (Restrict Access) using @login_required Decorator 
+Function-based view protected with login_required decorator. 
+ 
+From django.contrib.auth.decorators import login_required 
+@login_required 
+def my_protected_view(request): 
+    # Your view logic here 
+ 
+Bootstrap CSS 
+Link to include Bootstrap CSS in the base template. 
+Add the following link to the <head> section of your base template (usually base.html): 
+ 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
+ 
+Bootstrap JavaScript 
+Script tag to include Bootstrap JavaScript library. 
+Include the Bootstrap JavaScript library at the end of the <body> section to enable certain features (for example, dropdowns, modals): 
+ 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script> 
+Bootstrap classes and components 
+Create visually appealing and responsive web pages without having to write CSS styles manually. 
+<a href="#" class="btn btn-primary">Click Me</a> 
+Configuration – Static files 
+Django settings for static files configuration. 
+In your Django settings (settings.py), define the following settings: 
+ 
+STATIC_URL = 'https://prod-edx-edxapp-assets.edx-cdn.org/static/studio/edx.org-next/'  # URL to access static files 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Directory to look for static files 
+ 
+Configuration – Installed apps 
+Defines a list of all the applications installed in the project. 
+Add 'django.contrib.staticfiles' to your INSTALLED_APPS in settings.py: 
+ 
+INSTALLED_APPS = [ 
+    # ... 
+    'django.contrib.staticfiles', 
+    # ... 
+] 
+Configuration – App Dirs 
+A configuration option used within the TEMPLATES setting. When set to TRUE, Django will look for template files within the app directories. 
+Make sure the APP_DIRS setting is set to True in the TEMPLATES list. This allows Django to look for static files within the apps' directories. 
+ 
+TEMPLATES = [ 
+    { 
+        # ... 
+        'APP_DIRS': True, 
+        # ... 
+    }, 
+] 
+ 
+Usage – Static content 
+Code to style the HTML templates and provide interactivity to web pages. 
+<link href="{% static 'your_app/css/style.css' %}" rel="stylesheet"> 
+<script src="{% static 'your_app/js/script.js' %}"></script> 
+<img src="{% static 'your_app/img/logo.png' %}" alt="Logo"> 
+Collecting static files 
+When deploying your project, you need to collect all static files into a single location. 
+python manage.py collectstatic 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
+
+Final Project: Enhance Online Course App with New Features
+
+You will have the opportunity to take your Django skills and implement them in a project.. You will receive a boilerplate code for an Online Course app to work with.
+
+Then using the skills you learned in this course, you will plan and implement the improvements in the application; these improvements include:
+
+Create Question, Choice, and Submission models
+Create a new course object with exam related models using the admin site
+Update the course details template to show questions and choices
+Create a new exam result template to show the result of the submission
+Create a new exam result submission view
+Create a new view to display and evaluate exam result
+
+Task 1: Build New Models
+You will need to create several new models in onlinecourse/models.py
+
+ Open models.py in IDE
+
+Question model
+A Question model will save the questions of an exam with the following characteristics:
+
+Used to persist questions for a course
+Has a One-To-One relationship with the course
+Has question text
+Has a grade point for each question
+Hint
+
+class Question(models.Model):
+    Foreign key to course
+    Question text
+    Question grade
+Copied!
+Solution
+
+class Question(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    content = models.CharField(max_length=200)
+    grade = models.IntegerField(default=50)
+    def __str__(self):
+        return "Question: " + self.content
+Copied!
+Get Score
+Additionally, you can add the following function to your Question model, which calculates the score:
+
+    # method to calculate if the learner gets the score of the question
+    def is_get_score(self, selected_ids):
+        all_answers = self.choice_set.filter(is_correct=True).count()
+        selected_correct = self.choice_set.filter(is_correct=True, id__in=selected_ids).count()
+        if all_answers == selected_correct:
+            return True
+        else:
+            return False
+Copied!
+Choice model
+A Choice model saves all of the choices of a question:
+
+One-To-One relationship with Question model
+The choice text
+Indicates if this choice is the correct one or not
+Hint
+
+class Choice(models.Model):
+    Foreign key to question
+    Choice content as text
+    Is choice correct as boolean
+Copied!
+Solution
+
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    content = models.CharField(max_length=200)
+    is_correct = models.BooleanField(default=False)
+Copied!
+Submission Model
+You are provided with commented out Submission model, which has:
+
+One-to-Many relationships with Enrollment, for example, one course enrollment could have multiple exam submissions
+
+Many-to-Many relationship with choices or questions. For simplicity, you could relate the submission with the Choice model
+
+You need to uncomment the Submission model and use it to associate selected choices.
+
+Refer to other models in models.py as examples.
+
+Here is an example ER Diagram for your reference:
+
+Final solution
+Additionally, you can look at the final solution provided below.
+
+Click here to see final onlinecourse/models.py
+
+import sys
+from django.utils.timezone import now
+try:
+    from django.db import models
+except Exception:
+    print("There was an error loading django modules. Do you have django installed?")
+    sys.exit()
+from django.conf import settings
+import uuid
+# Instructor model
+class Instructor(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    full_time = models.BooleanField(default=True)
+    total_learners = models.IntegerField()
+    def __str__(self):
+        return self.user.username
+# Learner model
+class Learner(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    STUDENT = 'student'
+    DEVELOPER = 'developer'
+    DATA_SCIENTIST = 'data_scientist'
+    DATABASE_ADMIN = 'dba'
+    OCCUPATION_CHOICES = [
+        (STUDENT, 'Student'),
+        (DEVELOPER, 'Developer'),
+        (DATA_SCIENTIST, 'Data Scientist'),
+        (DATABASE_ADMIN, 'Database Admin')
+    ]
+    occupation = models.CharField(
+        null=False,
+        max_length=20,
+        choices=OCCUPATION_CHOICES,
+        default=STUDENT
+    )
+    social_link = models.URLField(max_length=200)
+    def __str__(self):
+        return self.user.username + "," + \
+               self.occupation
+# Course model
+class Course(models.Model):
+    name = models.CharField(null=False, max_length=30, default='online course')
+    image = models.ImageField(upload_to='course_images/')
+    description = models.CharField(max_length=1000)
+    pub_date = models.DateField(null=True)
+    instructors = models.ManyToManyField(Instructor)
+    users = models.ManyToManyField(settings.AUTH_USER_MODEL, through='Enrollment')
+    total_enrollment = models.IntegerField(default=0)
+    is_enrolled = False
+    def __str__(self):
+        return "Name: " + self.name + "," + \
+               "Description: " + self.description
+# Lesson model
+class Lesson(models.Model):
+    title = models.CharField(max_length=200, default="title")
+    order = models.IntegerField(default=0)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    content = models.TextField()
+# Enrollment model
+# <HINT> Once a user enrolled a class, an enrollment entry should be created between the user and course
+# And we could use the enrollment to track information such as exam submissions
+class Enrollment(models.Model):
+    AUDIT = 'audit'
+    HONOR = 'honor'
+    BETA = 'BETA'
+    COURSE_MODES = [
+        (AUDIT, 'Audit'),
+        (HONOR, 'Honor'),
+        (BETA, 'BETA')
+    ]
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    date_enrolled = models.DateField(default=now)
+    mode = models.CharField(max_length=5, choices=COURSE_MODES, default=AUDIT)
+    rating = models.FloatField(default=5.0)
+class Question(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    content = models.CharField(max_length=200)
+    grade = models.IntegerField(default=50)
+    def __str__(self):
+        return "Question: " + self.content
+    def is_get_score(self, selected_ids):
+        all_answers = self.choice_set.filter(is_correct=True).count()
+        selected_correct = self.choice_set.filter(is_correct=True, id__in=selected_ids).count()
+        if all_answers == selected_correct:
+            return True
+        else:
+            return False
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    content = models.CharField(max_length=200)
+    is_correct = models.BooleanField(default=False)
+class Submission(models.Model):
+    enrollment = models.ForeignKey(Enrollment, on_delete=models.CASCADE)
+    choices = models.ManyToManyField(Choice)
+Copied!
+Run migrations
+python3 manage.py makemigrations onlinecourse
+python3 manage.py migrate
+Copied!Executed!
+Note: If you see any errors related to model migrations, you could delete the existing database db.sqlite3 and rerun the above migration again.
+
+Assessment: Take a screen capture of the Question, Choice, and Submission model below and save the screen capture as 01-models.png.
+
+
+Task 2: Register Model Changes
+You will now make changes to onlinecourse/admin.py to be able to use the new features you have built.
+
+ Open admin.py in IDE
+
+Import new models
+At the moment, you are only importing Course, Lesson, Instructor, and Learner in onlinecourse/admin.py
+
+You need to add Question, Choice, and Submission
+
+Solution
+
+from .models import Course, Lesson, Instructor, Learner, Question, Choice, Submission
+
+Create QuestionInline and ChoiceInline
+Create QuestionInline and ChoiceInline classes so that you could edit them together on one page in the admin site.
+
+Hint
+
+class Class_Name(admin.StackedInline):
+    model = Model_Name
+    extra = 2
+Copied!
+Solution
+
+class ChoiceInline(admin.StackedInline):
+    model = Choice
+    extra = 2
+class QuestionInline(admin.StackedInline):
+    model = Question
+    extra = 2
+Copied!
+Create QuestionAdmin class
+Hint
+class QuestionAdmin(admin.ModelAdmin):
+    inlines = [Question_sub_content]
+    list_display = ['content']
+Solution
+class QuestionAdmin(admin.ModelAdmin):
+    inlines = [ChoiceInline]
+    list_display = ['content']
+Register Question, Choice, and Submission
+After you register the new models, you could create a new course with lessons, questions, and question choices using the admin site.
+
+The register decorator: register(*models, site=django.contrib.admin.sites.site)
+
+Hint
+
+admin.site.register(Model1, Model2)
+admin.site.register(Model3)
+Copied!
+Solution
+
+admin.site.register(Question, QuestionAdmin)
+admin.site.register(Choice)
+admin.site.register(Submission)
+Copied!
+See the final admin.py here:
+
+Solution
+
+from django.contrib import admin
+# <HINT> Import any new Models here
+from .models import Course, Lesson, Instructor, Learner, Question, Choice, Submission
+# <HINT> Register QuestionInline and ChoiceInline classes here
+class LessonInline(admin.StackedInline):
+    model = Lesson
+    extra = 5
+class ChoiceInline(admin.StackedInline):
+    model = Choice
+    extra = 2
+class QuestionInline(admin.StackedInline):
+    model = Question
+    extra = 2
+# Register your models here.
+class CourseAdmin(admin.ModelAdmin):
+    inlines = [LessonInline]
+    list_display = ('name', 'pub_date')
+    list_filter = ['pub_date']
+    search_fields = ['name', 'description']
+class QuestionAdmin(admin.ModelAdmin):
+    inlines = [ChoiceInline]
+    list_display = ['content']
+class LessonAdmin(admin.ModelAdmin):
+    list_display = ['title']
+# <HINT> Register Question and Choice models here
+admin.site.register(Course, CourseAdmin)
+admin.site.register(Lesson, LessonAdmin)
+admin.site.register(Instructor)
+admin.site.register(Learner)
+admin.site.register(Question, QuestionAdmin)
+admin.site.register(Choice)
+admin.site.register(Submission)
+Copied!
+Assessment: Take a screen capture of the admin.py and save the screen capture as 02-admin-
+file.png.
+
+
+Let's create an admin user with the following details:
+
+Username: admin
+Email address: leave blank by pressing enter
+Password: Your choice, or use p@ssword123
+1
+python3 manage.py createsuperuser
+Copied!Executed!
+Save your changes
+Run the Django development server and check if you can add Question and Choice objects using the admin site.
+
+1
+python3 manage.py runserver
+Copied!Executed!
+ Launch Django admin
+
+Assessment: Take a screen capture of the admin site and save the screen capture as 03-admin-site.png.
+
+You will now update the course detail template to create an exam section with a list of questions and choices.
+
+One exam contains multiple questions, and each should have more than one correct answer (multiple-selection).
+
+
+
+Task 3: Update the Course Detail Template
+You will now update the course detail template to create an exam section with a list of questions and choices.
+
+One exam contains multiple questions, and each should have more than one correct answer (multiple-selection).
+
+Take exam
+
+The changes will be made in templates/onlinecourse/course_details_bootstrap.html
+
+ Open course_detail_bootstrap.html in IDE
+
+Start editing the code in the placeholder provided:
+
+If the user is authenticated, show the course exam with a list of questions and choices:
+
+Hint
+1
+2
+3
+4
+ {% if CONDITION %}
+ </br>
+ <!-- Remaining code will go here -->
+ {% endif %}
+Copied!
+Solution
+1
+2
+3
+4
+ {% if user.is_authenticated %}
+ </br>
+ <!-- Remaining code will go here -->
+ {% endif %}
+Copied!
+Add a button to start the exam:
+
+Hint
+1
+ <TAG class="CLASS CLASS-primary CLASS-block" data-toggle="collapse" data-target="#exam">Start Exam</TAG>
+Copied!
+Solution
+1
+ <button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#exam">Start Exam</button>
+Copied!
+Add a collapsable div:
+
+Hint
+1
+2
+ <TAG id="exam" class="collapse">
+ </TAG>
+Copied!
+Solution
+1
+2
+ <div id="exam" class="collapse">
+ </div>
+Copied!
+Add the Question logic inside a form:
+
+Hint
+1
+2
+3
+4
+5
+ <div id="exam" class="collapse">
+     <form id="questionform" action="{% url 'onlinecourse:submit' course.id %}" method="POST">
+         LOOP COURSE QUESTIONS HERE
+     </form>
+ </div>
+Copied!
+Solution
+1
+2
+3
+4
+5
+6
+7
+ <div id="exam" class="collapse">
+     <form id="questionform" action="{% url 'onlinecourse:submit' course.id %}" method="POST">
+         {% for question in course.question_set.all %}
+             <!-- Question UI components will go here -->
+         {% endfor %}
+     </form>
+ </div>
+Copied!
+Add Question UI:
+
+Hint
+1
+2
+3
+4
+5
+6
+7
+ <div class="card mt-1">
+     <div class="card-header"><h5>{{ question.PROPERTY }}</h5></div>
+     {% csrf_token %}
+     <div class="form-group">
+     </div>
+ </div>
+Copied!
+Solution
+1
+2
+3
+4
+5
+6
+7
+ <div class="card mt-1">
+     <div class="card-header"><h5>{{ question.content }}</h5></div>
+     {% csrf_token %}
+     <div class="form-group">
+         <!-- Choices components go here -->
+     </div>
+ </div>
+Copied!
+Add Choices components:
+
+Hint
+1
+2
+3
+4
+5
+6
+7
+8
+9
+ {% for ITEM in question.FIELD.all %}
+ <div class="form-check">
+     <label class="form-check-label">
+         <input type="checkbox" name="choice_{{choice.IDENTIFIER}}"
+                class="form-check-input" id="{{choice.IDENTIFIER}}"
+                value="{{choice.IDENTIFIER}}">{{ choice.FIELD }}
+     </label>
+ </div>
+ {% endfor %}
+Copied!
+Solution
+1
+2
+3
+4
+5
+6
+7
+8
+9
+ {% for choice in question.choice_set.all %}
+ <div class="form-check">
+     <label class="form-check-label">
+         <input type="checkbox" name="choice_{{choice.id}}"
+                class="form-check-input" id="{{choice.id}}"
+                value="{{choice.id}}">{{ choice.content }}
+     </label>
+ </div>
+ {% endfor %}
+Copied!
+Final solution
+View the final solution here:
+
+Solution
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+{% if user.is_authenticated %}
+</br>
+<button class="btn btn-primary btn-block" data-toggle="collapse" data-target="#exam">Start Exam</button>
+<div id="exam" class="collapse">
+    <form id="questionform" action="{% url 'onlinecourse:submit' course.id %}" method="POST">
+        {% for question in course.question_set.all %}
+        <div class="card mt-1">
+            <div class="card-header">
+                <h5>{{ question.content }}</h5>
+            </div>
+            {% csrf_token %}
+            <div class="form-group">
+                {% for choice in question.choice_set.all %}
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" name="choice_{{choice.id}}" class="form-check-input"
+                            id="{{choice.id}}" value="{{choice.id}}">{{ choice.content }}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        <input class="btn btn-success btn-block" type="submit" value="Submit">
+    </form>
+</div>
+{% endif %}
+Copied!
+Run in to test:
+
+1
+python3 manage.py runserver
+Copied!Executed!
+ Launch onlinecourse application
+
+At this moment, you can not submit the exam. You will be implementing that in the next lab.
+
+Commit your code
+Committing and pushing your code to GitHub is a good practice to avoid losing it.
+
+Assessment: Take a screen capture of course_details_bootstrap.html and save the screen capture as 04-course-details.png.
+
+Task 4: Test Data
+You will now create test data for your application.
+
+Add instructor
+Add admin as an Instructor
+
+Course information
+Field	Value
+Name	Learning Django
+Image	Download from here
+Description	Django is an extremely popular and fully featured server-side web framework, written in Python
+Pub date	Today
+Instructors	admin
+Lesson #1 Title	What is Django
+Lesson #1 Order	0
+Lesson #1 Content	Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It೯urce.
+Test question
+Field	Value
+Course	Name: Learning Django, Description: …
+Content	Is Django a Python framework
+Grade	100
+Choice #1 Content	Yes
+Choice #1 Is correct	
+Choice #2 Content	No
+Choice #2 Is correct	Leave blank
+Let's open the course's front end.
+
+See viedeo (screen cast)
+
+These Professional Certificates will equip learners with all the key skills and technical know-how to launch a career as an entry level back-end or full stack developer. Guided by experts, they will learn the latest tools and technologies used by professional developers, including Linux scripting, Git and GitHub, Python, SQL, Databases, Django, Containers with Docker, Kubernetes, and OpenShift, Microservices, Serverless, as well as Application Security, and Monitoring. 
+
+Two courses pinned
+
+
+
+
+
+
+
+
+
+
